@@ -11,7 +11,6 @@ export class StudentController {
         private studentService: StudentService
     ) { }
 
-
     createStudent(@Body() createStudentDTO: CreateStudentDTO): Promise<Student> {
         return this.studentService.createStudent(createStudentDTO);
 

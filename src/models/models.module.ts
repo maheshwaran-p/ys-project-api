@@ -9,8 +9,9 @@ import { Staff } from './entities/staff.entity';
 import { Student } from './entities/student.entity';
 import { User } from './entities/user.entity';
 import { StaffService } from './services/staff.service';
+import { StudentService } from './services/student.service';
 import { UserService } from './services/user.service';
-import { UtilsService } from './services/utils.service';
+import { UtilsService } from '../utils/utils.service';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { UtilsService } from './services/utils.service';
     }),
     TypeOrmModule.forFeature([User, Staff, Student, Course]),
   ],
-  providers: [StaffService, UserService, UtilsService],
-  exports: [StaffService, UserService, UtilsService],
+  providers: [StaffService, UserService, UtilsService, StudentService],
+  exports: [StaffService, UserService, UtilsService, StudentService],
 })
 export class ModelsModule { }

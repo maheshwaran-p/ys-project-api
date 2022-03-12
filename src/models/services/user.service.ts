@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../../utils/utils.service';
 
 @Injectable()
 export class UserService {
@@ -10,7 +10,7 @@ export class UserService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
     private utilsService: UtilsService,
-  ) {}
+  ) { }
 
   async createUser(
     username: string,
