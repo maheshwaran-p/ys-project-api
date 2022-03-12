@@ -11,10 +11,14 @@ export class StaffService {
     @InjectRepository(Staff)
     private staffRepository: Repository<Staff>,
     private userService: UserService,
-  ) {}
+  ) { }
   async createStaff(createStaffDTO: CreateStaffDTO): Promise<Staff> {
     let { username, password, email } = createStaffDTO;
     const user = await this.userService.createUser(username, password, email);
     return this.staffRepository.save({ user: user });
+  }
+
+  async getStaffById(id: number): Promise<Staff> {
+    return this.staffRepository.findOne({ id: id });
   }
 }

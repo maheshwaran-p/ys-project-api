@@ -1,3 +1,4 @@
+import { CourseModule } from './modules/course/course.module';
 import { UtilsModule } from './utils/utils.module';
 import { MultipleChoiceModule } from './modules/multipleChoice/multiplechoice.module';
 import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
@@ -10,6 +11,7 @@ import { StaffController } from './modules/staff/staff.controller';
 
 @Module({
   imports: [
+    CourseModule,
     UtilsModule,
     MultipleChoiceModule,
     VideoModule,
