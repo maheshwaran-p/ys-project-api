@@ -16,4 +16,8 @@ export class CourseService {
         const staff = await this.staffService.getStaffById(staffId);
         return this.courseRespository.save({ staff: staff, courseName: courseName });
     }
+
+    getCourseById(courseId: number): Promise<Course> {
+        return this.courseRespository.findOne({ id: courseId });
+    }
 }
