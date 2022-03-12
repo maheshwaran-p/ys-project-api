@@ -1,4 +1,5 @@
 
+import { Put } from '@nestjs/common';
 import { Body, Controller } from '@nestjs/common';
 import { CreateStudentDTO } from 'src/models/dto/create-student.dto';
 import { Student } from 'src/models/entities/student.entity';
@@ -10,7 +11,7 @@ export class StudentController {
     constructor(
         private studentService: StudentService
     ) { }
-
+    @Put()
     createStudent(@Body() createStudentDTO: CreateStudentDTO): Promise<Student> {
         return this.studentService.createStudent(createStudentDTO);
 

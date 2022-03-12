@@ -16,6 +16,11 @@ import { UtilsModule } from 'src/utils/utils.module';
 import { MulitpleChoiceService } from './services/mulitplechoice.service';
 import { MultipleChoice } from './entities/multiple-choice.entity';
 import { CourseService } from './services/course.service';
+import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
+import { MatchService } from './services/match.service';
+import { MatchEntity } from './entities/match.entity';
+import { MatchAnswer } from './entities/match-answer.entity';
+import { MatchQuestion } from './entities/match-question.entity';
 
 @Module({
   imports: [
@@ -29,9 +34,9 @@ import { CourseService } from './services/course.service';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User, Staff, Student, Course, MultipleChoice]),
+    TypeOrmModule.forFeature([User, Staff, Student, Course, MultipleChoice, MultipleChoiceResponse, MatchEntity, MatchAnswer, MatchQuestion]),
   ],
-  providers: [StaffService, UserService, StudentService, UtilsService, MulitpleChoiceService, CourseService],
-  exports: [StaffService, UserService, StudentService, MulitpleChoiceService, CourseService],
+  providers: [StaffService, UserService, StudentService, UtilsService, MulitpleChoiceService, CourseService, MatchService],
+  exports: [StaffService, UserService, StudentService, MulitpleChoiceService, CourseService, MatchService],
 })
 export class ModelsModule { }

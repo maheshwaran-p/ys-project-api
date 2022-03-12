@@ -1,3 +1,6 @@
+import { MatchService } from './models/services/match.service';
+import { MatchModule } from './modules/match/match.module';
+import { MatchController } from './modules/match/match.controller';
 import { CourseModule } from './modules/course/course.module';
 import { UtilsModule } from './utils/utils.module';
 import { MultipleChoiceModule } from './modules/multipleChoice/multiplechoice.module';
@@ -11,14 +14,17 @@ import { StaffController } from './modules/staff/staff.controller';
 
 @Module({
   imports: [
+    MatchModule,
     CourseModule,
     UtilsModule,
     MultipleChoiceModule,
     VideoModule,
     StudentModule, ModelsModule],
   controllers: [
+    MatchController,
     MultipleChoiceController,
     VideoController, StaffController,],
-  providers: [],
+  providers: [
+    MatchService,],
 })
 export class AppModule { }
