@@ -1,3 +1,5 @@
+import { VideoModule } from './modules/video/video.module';
+import { VideoController } from './modules/video/video.controller';
 import { StudentModule } from './modules/student/student.module';
 import { UtilsService } from './models/services/utils.service';
 import { ModelsModule } from './models/models.module';
@@ -6,8 +8,10 @@ import { StaffController } from './modules/staff/staff.controller';
 
 @Module({
   imports: [
+    VideoModule,
     StudentModule, ModelsModule],
-  controllers: [StaffController],
+  controllers: [
+    VideoController, StaffController],
   providers: [UtilsService],
 })
 export class AppModule { }
