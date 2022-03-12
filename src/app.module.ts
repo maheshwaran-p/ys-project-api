@@ -24,7 +24,6 @@ import { StaffController } from './modules/staff/staff.controller';
     MatchController,
     MultipleChoiceController,
     VideoController, StaffController,],
-  providers: [
-    MatchService,],
+  providers: [],
 })
 export class AppModule { }

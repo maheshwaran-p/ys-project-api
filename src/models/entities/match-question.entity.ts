@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { MatchAnswer } from "./match-answer.entity";
 import { MatchEntity } from "./match.entity";
 
@@ -8,6 +8,7 @@ export class MatchQuestion {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({ nullable: false })
     question: string;
 
     @OneToOne(() => MatchAnswer)
@@ -16,5 +17,6 @@ export class MatchQuestion {
 
 
     @ManyToOne(() => MatchEntity, match => match.id)
+    @JoinColumn()
     match: MatchEntity;
 }

@@ -12,11 +12,6 @@ export class MatchEntity extends BaseEntity {
     course: Course;
 
     @OneToMany(() => MatchQuestion, matchQuestion => matchQuestion.id)
-    @JoinColumn()
     questions: MatchQuestion[];
-
-    @OneToMany(() => MatchAnswer, matchAnswer => matchAnswer.id)
-    @JoinColumn()
-    answers: MatchAnswer[];
 
 }
