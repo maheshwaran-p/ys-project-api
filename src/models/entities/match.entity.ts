@@ -11,7 +11,7 @@ export class MatchEntity extends BaseEntity {
     @ManyToOne(() => Course, course => course.id)
     course: Course;
 
-    @OneToMany(() => MatchQuestion, matchQuestion => matchQuestion.id)
+    @OneToMany(() => MatchQuestion, matchQuestion => matchQuestion.id, { onDelete: 'CASCADE' })
     questions: MatchQuestion[];
 
 }

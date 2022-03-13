@@ -21,6 +21,7 @@ import { MatchService } from './services/match.service';
 import { MatchEntity } from './entities/match.entity';
 import { MatchAnswer } from './entities/match-answer.entity';
 import { MatchQuestion } from './entities/match-question.entity';
+import { MatchResponse } from './entities/match-response.entity';
 
 @Module({
   imports: [
@@ -34,9 +35,20 @@ import { MatchQuestion } from './entities/match-question.entity';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User, Staff, Student, Course, MultipleChoice, MultipleChoiceResponse, MatchEntity, MatchAnswer, MatchQuestion]),
+    TypeOrmModule.forFeature([
+      User,
+      Staff,
+      Student,
+      Course,
+      MultipleChoice,
+      MultipleChoiceResponse,
+      MatchEntity,
+      MatchAnswer,
+      MatchQuestion,
+      MatchResponse]),
   ],
-  providers: [StaffService, UserService, StudentService, UtilsService, MulitpleChoiceService, CourseService, MatchService],
+  providers: [
+    StaffService, UserService, StudentService, UtilsService, MulitpleChoiceService, CourseService, MatchService],
   exports: [StaffService, UserService, StudentService, MulitpleChoiceService, CourseService, MatchService],
 })
 export class ModelsModule { }
