@@ -1,28 +1,34 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { BaseEntity } from "./base.entity";
+import { Course } from "./course.entity";
+import { Student } from "./student.entity";
+
 
 @Entity()
-export class FillInTheBlanks {
+export class FillInTheBlanks extends BaseEntity {
 
-    @PrimaryColumn()
-    id: number
+
     @Column()
     question: string
     @Column()
     answer: string
-    @Column({
-        name: 'created_at',
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP',
-    })
-    createdAt: Date;
-
-    @Column({
-        name: 'updated_at',
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP',
-    })
-    updatedAt: Date;
+    @ManyToOne(type => Course, course => course.id)
+    course: Course;
 
 
+}
+
+@Entity()
+export class FillResponse extends BaseEntity {
+
+
+    @ManyToOne(() => FillInTheBlanks, fillintheblanks => fillintheblanks.id)
+    question: FillInTheBlanks;
+
+    @ManyToOne(() => Student, student => student.id)
+    student: Student;
+
+    @Column()
+    answer: string;
 
 }
