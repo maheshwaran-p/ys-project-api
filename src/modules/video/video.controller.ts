@@ -2,16 +2,29 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { VideoQuestionDTO } from 'src/models/dto/video-question.dto';
+import { VideoService } from 'src/models/services/video.service';
 
-@Controller()
+@Controller('videoquestion')
 export class VideoController {
 
     constructor(
+        private videoService: VideoService
+
+    ) { }
 
 
-    ) {
+    @Post()
+    videoquestion(@Body() videoQuestionDto: VideoQuestionDTO) {
+
+        return this.videoService.videoquestion(videoQuestionDto.course, videoQuestionDto.question);
+
+
 
     }
+
+
+
 
 }

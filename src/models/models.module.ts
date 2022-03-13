@@ -1,27 +1,22 @@
-/*
-https://docs.nestjs.com/modules
-*/
-
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UtilsService } from 'src/utils/utils.service';
 import { Course } from './entities/course.entity';
-import { Staff } from './entities/staff.entity';
-import { Student } from './entities/student.entity';
-import { User } from './entities/user.entity';
-import { StaffService } from './services/staff.service';
-import { StudentService } from './services/student.service';
-import { UserService } from './services/user.service';
-import { UtilsService } from '../utils/utils.service';
-import { UtilsModule } from 'src/utils/utils.module';
-import { MulitpleChoiceService } from './services/mulitplechoice.service';
-import { MultipleChoice } from './entities/multiple-choice.entity';
-import { CourseService } from './services/course.service';
-import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
-import { MatchService } from './services/match.service';
-import { MatchEntity } from './entities/match.entity';
 import { MatchAnswer } from './entities/match-answer.entity';
 import { MatchQuestion } from './entities/match-question.entity';
 import { MatchResponse } from './entities/match-response.entity';
+import { MatchEntity } from './entities/match.entity';
+import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
+import { MultipleChoice } from './entities/multiple-choice.entity';
+import { Staff } from './entities/staff.entity';
+import { Student } from './entities/student.entity';
+import { User } from './entities/user.entity';
+import { CourseService } from './services/course.service';
+import { MatchService } from './services/match.service';
+import { MulitpleChoiceService } from './services/mulitplechoice.service';
+import { StaffService } from './services/staff.service';
+import { StudentService } from './services/student.service';
+import { UserService } from './services/user.service';
 
 @Module({
   imports: [
