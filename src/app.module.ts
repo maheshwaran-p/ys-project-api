@@ -11,19 +11,36 @@ import { StudentModule } from './modules/student/student.module';
 import { ModelsModule } from './models/models.module';
 import { Module } from '@nestjs/common';
 import { StaffController } from './modules/staff/staff.controller';
+import { FillModule } from './modules/fill-in-the-blanks/fill.module';
+import { FillresponseModule } from './modules/fill-in-the-blanks-response/fillresponse.module';
+import { VideoResponseModule } from './modules/video-response/video-response.module';
+import { VideoResponseController } from './modules/video-response/video-response.controller';
+import { FillController } from './modules/fill-in-the-blanks/fill.controller';
+import { FillresponseController } from './modules/fill-in-the-blanks-response/fillresponse.controller';
+import { StudentController } from './modules/student/student.controller';
 
 @Module({
   imports: [
+    FillresponseModule,
+    FillModule,
+    VideoModule,
+    VideoResponseModule,
     MatchModule,
     CourseModule,
     UtilsModule,
     MultipleChoiceModule,
-    VideoModule,
-    StudentModule, ModelsModule],
+    StudentModule,
+    ModelsModule],
   controllers: [
     MatchController,
     MultipleChoiceController,
-    VideoController, StaffController,],
+    StudentController,
+    StaffController,
+    VideoController,
+    VideoResponseController,
+    FillController,
+    FillresponseController
+  ],
   providers: [],
 })
 export class AppModule { }
