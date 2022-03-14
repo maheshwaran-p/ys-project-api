@@ -5,10 +5,10 @@ import { Student } from "./student.entity";
 
 @Entity()
 export class MultipleChoiceResponse extends BaseEntity {
-    @ManyToOne(() => Student, student => student.id)
+    @ManyToOne(() => Student, student => student.id, { onDelete: 'CASCADE' })
     @JoinColumn()
     student: Student;
-    @ManyToOne(() => MultipleChoice, multipleChoice => multipleChoice.id)
+    @ManyToOne(() => MultipleChoice, multipleChoice => multipleChoice.id, { onDelete: 'CASCADE' })
     @JoinColumn()
     question: MultipleChoice;
     @Column({ nullable: false })

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { MultipleChoiceResponseDTO } from '../dto/multiple-choice-response.dto';
+import { MultipleChoiceResponseDTO, MultipleChoiceResponseInterface } from '../dto/multiple-choice-response.dto';
 import { MultipleChoiceDTO } from '../dto/multiple-choice.dto';
 import { MultipleChoiceResponse } from '../entities/multiple-choice-response.entity';
 import { MultipleChoice } from '../entities/multiple-choice.entity';
@@ -15,11 +15,9 @@ export class MulitpleChoiceService {
         private mutipleChoiceRepository: Repository<MultipleChoice>,
         @InjectRepository(MultipleChoiceResponse)
         private multipleChoiceResponseRepository: Repository<MultipleChoiceResponse>,
-        private courseService: CourseService
     ) { }
 
     async createMultipleChoice(courseId: number, questions: MultipleChoiceDTO[]) {
-        const course = await this.courseService.getCourseById(courseId);
         const query = this.mutipleChoiceRepository.createQueryBuilder()
             .insert()
             .into(MultipleChoice)
@@ -31,7 +29,7 @@ export class MulitpleChoiceService {
                         choiceOne: e.choiceOne,
                         choiceTwo: e.choiceTwo,
                         choiceThree: e.choiceThree,
-                        course: course
+                        course: { id: courseId }
 
                     })
                 )
@@ -42,11 +40,20 @@ export class MulitpleChoiceService {
     }
 
     async createMulitpleChoiceResponse(multipleChoiceResponseDTO: MultipleChoiceResponseDTO[], studentId: number): Promise<any> {
+        let items: MultipleChoiceResponseInterface[] = [];
+        for (let each of multipleChoiceResponseDTO) {
+            items.push({
+                answer: each.answer,
+                questionId: each.questionId,
+                isCorrect: each.answer === (await this.mutipleChoiceRepository.findOne({ id: each.questionId })).answer
+
+            })
+        }
         const query = this.multipleChoiceResponseRepository.createQueryBuilder()
             .insert()
             .into(MultipleChoiceResponse)
             .values(
-                multipleChoiceResponseDTO.map(e => ({ answer: e.answer, question: { id: e.questionId }, student: { id: studentId } }))
+                items.map(e => ({ answer: e.answer, question: { id: e.questionId }, student: { id: studentId }, isCorrect: e.isCorrect }))
             )
 
         return query.execute();

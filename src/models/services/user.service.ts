@@ -16,14 +16,14 @@ export class UserService {
     username: string,
     password: string,
     email: string,
-    isStaff: boolean = true
+    isStaff: boolean = false
   ): Promise<User> {
     const user = this.userRepository.create({
       username: username,
       email: email,
     });
     user.isStaff = isStaff
-    user.password = 'password';
+    user.password = password;
     return this.userRepository.save(user);
   }
 

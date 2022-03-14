@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { MatchAnswer } from "./match-answer.entity";
 import { MatchQuestion } from "./match-question.entity";
 import { Student } from "./student.entity";
@@ -13,5 +13,8 @@ export class MatchResponse {
     question: MatchQuestion;
     @ManyToOne(() => MatchAnswer, { onDelete: 'CASCADE' })
     answer: MatchAnswer;
+
+    @Column({ default: false })
+    isCorrect: boolean;
 
 }

@@ -19,7 +19,7 @@ export class MultipleChoiceController {
     }
 
     @UseGuards(JwtGaurd)
-    @Put('response')
+    @Put('/response')
     createMultipleChoiceResponse(
         @Request() req,
         @Body() multipleChoiceResponseDTO: MultipleChoiceResponseDTO[],
