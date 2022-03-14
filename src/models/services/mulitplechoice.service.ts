@@ -59,5 +59,13 @@ export class MulitpleChoiceService {
         return query.execute();
     }
 
+    async getMultipleChoice(courseId: number): Promise<MultipleChoice[]> {
+        return await this.mutipleChoiceRepository.find({ course: { id: courseId } });
+    }
+
+    async getMultipleChoiceResponse(courseId: number, studentId: any): Promise<any> {
+        return await this.multipleChoiceResponseRepository.find({ relations: ['question'], where: { student: studentId, question: { course: { id: courseId } } } })
+    }
+
 
 }
