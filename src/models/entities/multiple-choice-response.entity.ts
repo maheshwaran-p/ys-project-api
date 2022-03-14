@@ -13,4 +13,6 @@ export class MultipleChoiceResponse extends BaseEntity {
     question: MultipleChoice;
     @Column({ nullable: false })
     answer: string;
+    @Column({ nullable: false })
+    isCorrect: boolean;
 }

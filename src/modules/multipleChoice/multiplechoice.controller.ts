@@ -24,11 +24,10 @@ export class MultipleChoiceController {
         @Request() req,
         @Body() multipleChoiceResponseDTO: MultipleChoiceResponseDTO[],
     ) {
-        const { userCtx } = req.user;
-
+        const student = req.user.userCtx;
         return this.multipleChoiceService.createMulitpleChoiceResponse(
             multipleChoiceResponseDTO,
-            userCtx.id
+            student.id
         );
     }
 
