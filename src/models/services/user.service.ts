@@ -16,13 +16,14 @@ export class UserService {
     username: string,
     password: string,
     email: string,
+    isStaff: boolean = true
   ): Promise<User> {
     const user = this.userRepository.create({
       username: username,
       email: email,
     });
-    user['password'] = 'password';
-    user['token'] = '#1234abcde';
+    user.isStaff = isStaff
+    user.password = 'password';
     return this.userRepository.save(user);
   }
 

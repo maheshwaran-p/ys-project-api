@@ -1,7 +1,3 @@
-/*
-https://docs.nestjs.com/modules
-*/
-
 import { Module } from '@nestjs/common';
 
 @Module({
@@ -9,4 +5,4 @@ import { Module } from '@nestjs/common';
     controllers: [],
     providers: [],
 })
-export class UtilsModule {}
+export class UtilsModule { }
