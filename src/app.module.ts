@@ -1,3 +1,5 @@
+import { AuthModule } from './modules/auth/auth.module';
+import { AuthController } from './modules/auth/auth.controller';
 import { FillintheBlanksResponseService } from './models/services/fillintheblanksresponse.service';
 import { FillresponseModule } from './modules/fill-in-the-blanks-response/fillresponse.module';
 import { FillintheblanksService } from './models/services/fillintheblanks.service';
@@ -14,17 +16,33 @@ import { VideoResponseController } from './modules/video-response/video-response
 import { StudentController } from './modules/student/student.controller';
 import { FillresponseController } from './modules/fill-in-the-blanks-response/fillresponse.controller';
 import { UtilsService } from './utils/utils.service';
+import { AuthService } from './modules/auth/auth.service';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
+    AuthModule,
     FillresponseModule,
     FillModule,
     VideoResponseModule,
     VideoModule,
-    StudentModule, ModelsModule],
+    StudentModule,
+    ModelsModule,
+    JwtModule.register({
+      secret: "ys-secret",
+      signOptions: { expiresIn: "7d" }
+    })
+  ],
   controllers: [
-    StudentController, StaffController, VideoController, VideoResponseController, FillController, FillresponseController],
+    AuthController,
+    StudentController,
+    StaffController,
+    VideoController,
+    VideoResponseController,
+    FillController,
+    FillresponseController],
   providers: [
-    UtilsService],
+    AuthService,
+  ],
 })
 export class AppModule { }

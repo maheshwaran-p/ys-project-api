@@ -25,4 +25,10 @@ export class UserService {
     user['token'] = '#1234abcde';
     return this.userRepository.save(user);
   }
+
+  findUserByName(username: string): Promise<User | undefined> {
+    return this.userRepository.findOne({ username: username });
+
+  }
+
 }
