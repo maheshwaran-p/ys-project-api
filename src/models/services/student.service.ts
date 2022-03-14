@@ -25,4 +25,8 @@ export class StudentService {
         let { firstName, lastName } = createStudentDTO;
         return this.studentRespository.save({ firstName: firstName, lastName: lastName, user: user });
     }
+
+    async findStudentByUserId(userId: number): Promise<Student> {
+        return this.studentRespository.findOne({ user: { id: userId } })
+    }
 }
