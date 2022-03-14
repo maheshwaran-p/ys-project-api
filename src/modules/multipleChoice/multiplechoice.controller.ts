@@ -1,10 +1,12 @@
 import { Param } from '@nestjs/common';
-import { Body } from '@nestjs/common';
+import { Body, Request } from '@nestjs/common';
 import { Put } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { MultipleChoiceResponseDTO } from 'src/models/dto/multiple-choice-response.dto';
 import { MultipleChoiceDTO } from 'src/models/dto/multiple-choice.dto';
 import { MulitpleChoiceService } from 'src/models/services/mulitplechoice.service';
+import { JwtGaurd } from '../auth/jwt.guard';
 
 @Controller('/course/:courseId/mcq')
 export class MultipleChoiceController {
@@ -16,12 +18,18 @@ export class MultipleChoiceController {
         return this.multipleChoiceService.createMultipleChoice(courseId, multipleChoiceDTO);
     }
 
-    @Put('/:studentId/response')
+    @UseGuards(JwtGaurd)
+    @Put('response')
     createMultipleChoiceResponse(
+        @Request() req,
         @Body() multipleChoiceResponseDTO: MultipleChoiceResponseDTO[],
-        @Param('studentId') studentId: number,
     ) {
-        return this.multipleChoiceService.createMulitpleChoiceResponse(multipleChoiceResponseDTO, studentId);
+        const { userCtx } = req.user;
+
+        return this.multipleChoiceService.createMulitpleChoiceResponse(
+            multipleChoiceResponseDTO,
+            userCtx.id
+        );
     }
 
 }
