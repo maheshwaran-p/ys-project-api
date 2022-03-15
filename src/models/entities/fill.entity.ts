@@ -31,4 +31,7 @@ export class FillResponse extends BaseEntity {
     @Column()
     answer: string;
 
+    @Column()
+    isCorrect: boolean;
+
 }

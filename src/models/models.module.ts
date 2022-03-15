@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UtilsService } from 'src/utils/utils.service';
+import { CourseResponse } from './entities/course-reponse.entity';
 import { Course } from './entities/course.entity';
 import { FillInTheBlanks, FillResponse } from './entities/fill.entity';
 import { MatchAnswer } from './entities/match-answer.entity';
@@ -15,7 +16,7 @@ import { User } from './entities/user.entity';
 import { Video, VideoResponse } from './entities/video.entity';
 import { CourseService } from './services/course.service';
 import { FillintheblanksService } from './services/fillintheblanks.service';
-import { FillintheBlanksResponseService } from './services/fillintheblanksresponse.service';
+import { FillResponseService } from './services/fillintheblanksresponse.service';
 import { MatchService } from './services/match.service';
 import { MulitpleChoiceService } from './services/mulitplechoice.service';
 import { StaffService } from './services/staff.service';
@@ -51,6 +52,7 @@ import { VideoService } from './services/video.service';
       FillResponse,
       VideoResponse,
       Video,
+      CourseResponse,
     ]),
   ],
   providers: [
@@ -62,7 +64,7 @@ import { VideoService } from './services/video.service';
     CourseService,
     MatchService,
     VideoResponseService,
-    FillintheBlanksResponseService,
+    FillResponseService,
     VideoService,
     FillintheblanksService],
   exports: [
@@ -74,7 +76,7 @@ import { VideoService } from './services/video.service';
     MatchService,
     VideoResponseService,
     VideoService,
-    FillintheBlanksResponseService,
+    FillResponseService,
     FillintheblanksService],
 })
 export class ModelsModule { }

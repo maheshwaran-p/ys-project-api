@@ -1,6 +1,6 @@
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthController } from './modules/auth/auth.controller';
-import { FillintheBlanksResponseService } from './models/services/fillintheblanksresponse.service';
+import { FillResponseService } from './models/services/fillintheblanksresponse.service';
 import { FillresponseModule } from './modules/fill-in-the-blanks-response/fillresponse.module';
 import { FillintheblanksService } from './models/services/fillintheblanks.service';
 import { FillModule } from './modules/fill-in-the-blanks/fill.module';
