@@ -1,14 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { MatchDTO } from '../dto/match.dto';
+import { MatchDTO, MatchResponseDTO } from '../dto/match.dto';
 import { Course } from '../entities/course.entity';
 import { MatchAnswer } from '../entities/match-answer.entity';
 import { MatchQuestion } from '../entities/match-question.entity';
+import { MatchResponse } from '../entities/match-response.entity';
 import { MatchEntity } from '../entities/match.entity';
 
 @Injectable()
 export class MatchService {
+
 
     constructor(
         @InjectRepository(MatchEntity)
@@ -16,7 +18,9 @@ export class MatchService {
         @InjectRepository(MatchAnswer)
         private matchAnswerRepository: Repository<MatchAnswer>,
         @InjectRepository(MatchQuestion)
-        private matchQuestionRepository: Repository<MatchQuestion>
+        private matchQuestionRepository: Repository<MatchQuestion>,
+        @InjectRepository(MatchResponse)
+        private matchResponseRepository: Repository<MatchResponse>
     ) { }
 
 
@@ -29,4 +33,24 @@ export class MatchService {
         }
         return matchEntity;
     }
+
+    createMatchReponse(matchResponseDTOs: MatchResponseDTO[], studentId: number) {
+        const query = this.matchResponseRepository.createQueryBuilder()
+            .insert()
+            .into(MatchResponse)
+            .values(
+                matchResponseDTOs.map(e => ({
+                    answer: { id: e.answerId },
+                    question: { id: e.questionId },
+                    student: { id: studentId }
+
+                }))
+            );
+
+        return query.execute();
+
+    }
+
+
+
 }

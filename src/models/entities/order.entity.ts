@@ -1,13 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity } from "./base.entity";
+import { Course } from "./course.entity";
+import { Student } from "./student.entity";
+import { Video } from "./video.entity";
 
 
 @Entity()
 
-export class Order {
+export class Order extends BaseEntity {
 
 
-    @PrimaryGeneratedColumn()
-    id: number
     @Column()
     question: string
 
@@ -15,21 +17,26 @@ export class Order {
     @Column()
     answer: string
 
-    @Column({
-        name: 'created_at',
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP',
-    })
-    createdAt: Date;
 
-    @Column({
-        name: 'updated_at',
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP',
-    })
-    updatedAt: Date;
+    @ManyToOne(type => Course, course => course.id)
+    course: Course;
 
 
+}
+
+
+@Entity()
+export class OrderResponse extends BaseEntity{
+
+
+    @ManyToOne(() => Video, video => video.id)
+    question: Video;
+
+    @ManyToOne(() => Student, student => student.id)
+    student: Student;
+
+    @Column()
+    answer: string
 
 
 }

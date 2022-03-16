@@ -18,9 +18,9 @@ export class VideoService {
     ) { }
 
 
-    videoquestion(courseId: number, question: string): Promise<any> {
+   async videoquestion(courseId: number, question: string): Promise<any> {
 
-        return this.videoRespository.save({ courseId: courseId, question: question });
+        return await this.videoRespository.save({ courseId: courseId, question: question });
 
     }
 

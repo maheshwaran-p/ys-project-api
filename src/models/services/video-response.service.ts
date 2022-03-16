@@ -1,7 +1,3 @@
-/*
-https://docs.nestjs.com/providers#services
-*/
-
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
@@ -17,9 +13,9 @@ export class VideoResponseService {
     ) { }
 
 
-    videoresponse(questionId: number, studentId: number, answer: string): Promise<any> {
+   async videoresponse(questionId: number, studentId: number, answer: string): Promise<any> {
 
-        return this.videoResponseRespository.save({ questionId: questionId, studentId: studentId, answer: answer });
+        return await this.videoResponseRespository.save({ questionId: questionId, studentId: studentId, answer: answer });
 
     }
 

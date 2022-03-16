@@ -17,8 +17,8 @@ export class FillintheblanksService {
 
     ) { }
 
-    fillintheblanksquestion(question: string, answer: string): Promise<any> {
+    async fillintheblanksquestion(question: string, answer: string): Promise<any> {
 
-        return this.fillInTheBlanksQuestionRepository.save({ question: question, answer: answer });
+        return await this.fillInTheBlanksQuestionRepository.save({ question: question, answer: answer });
     }
 }

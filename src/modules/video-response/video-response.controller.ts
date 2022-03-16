@@ -3,10 +3,10 @@ https://docs.nestjs.com/controllers#controllers
 */
 
 import { Body, Controller, Post } from '@nestjs/common';
-import { VideoResponseDTO } from 'src/models/dto/video-response.dto';
+import { VideoResponseDTO } from 'src/models/dto/video';
 import { VideoResponseService } from 'src/models/services/video-response.service';
 
-@Controller('/videoresponse')
+@Controller()
 export class VideoResponseController {
 
 

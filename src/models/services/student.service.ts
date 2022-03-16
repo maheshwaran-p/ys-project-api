@@ -1,7 +1,3 @@
-/*
-https://docs.nestjs.com/providers#services
-*/
-
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -24,5 +20,9 @@ export class StudentService {
         const user = await this.userService.createUser(username, password, email);
         let { firstName, lastName } = createStudentDTO;
         return this.studentRespository.save({ firstName: firstName, lastName: lastName, user: user });
+    }
+
+    async findStudentByUserId(userId: number): Promise<Student> {
+        return this.studentRespository.findOne({ user: { id: userId } })
     }
 }

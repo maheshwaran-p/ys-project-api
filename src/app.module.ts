@@ -1,46 +1,54 @@
-import { MatchService } from './models/services/match.service';
-import { MatchModule } from './modules/match/match.module';
-import { MatchController } from './modules/match/match.controller';
-import { CourseModule } from './modules/course/course.module';
-import { UtilsModule } from './utils/utils.module';
-import { MultipleChoiceModule } from './modules/multipleChoice/multiplechoice.module';
-import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
+import { OrderresponseModule } from './modules/order-response/orderresponse.module';
+import { OrderModule } from './modules/order/order.module';
+
+import { AuthModule } from './modules/auth/auth.module';
+import { AuthController } from './modules/auth/auth.controller';
+import { FillresponseModule } from './modules/fill-in-the-blanks-response/fillresponse.module';
+import { FillModule } from './modules/fill-in-the-blanks/fill.module';
+import { VideoResponseModule } from './modules/video-response/video-response.module';
 import { VideoModule } from './modules/video/video.module';
 import { VideoController } from './modules/video/video.controller';
 import { StudentModule } from './modules/student/student.module';
 import { ModelsModule } from './models/models.module';
 import { Module } from '@nestjs/common';
 import { StaffController } from './modules/staff/staff.controller';
-import { FillModule } from './modules/fill-in-the-blanks/fill.module';
-import { FillresponseModule } from './modules/fill-in-the-blanks-response/fillresponse.module';
-import { VideoResponseModule } from './modules/video-response/video-response.module';
-import { VideoResponseController } from './modules/video-response/video-response.controller';
 import { FillController } from './modules/fill-in-the-blanks/fill.controller';
-import { FillresponseController } from './modules/fill-in-the-blanks-response/fillresponse.controller';
+import { VideoResponseController } from './modules/video-response/video-response.controller';
 import { StudentController } from './modules/student/student.controller';
+import { FillresponseController } from './modules/fill-in-the-blanks-response/fillresponse.controller';
+import { AuthService } from './modules/auth/auth.service';
+import { JwtModule } from '@nestjs/jwt';
+import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
 
 @Module({
   imports: [
+    OrderresponseModule, 
+    OrderModule, 
+    AuthModule,
     FillresponseModule,
     FillModule,
-    VideoModule,
     VideoResponseModule,
-    MatchModule,
-    CourseModule,
-    UtilsModule,
-    MultipleChoiceModule,
+    VideoModule,
     StudentModule,
-    ModelsModule],
+    ModelsModule,
+    JwtModule.register({
+      secret: "ys-secret",
+      signOptions: { expiresIn: "7d" }
+    })
+  ],
   controllers: [
-    MatchController,
-    MultipleChoiceController,
+    AuthController,
     StudentController,
     StaffController,
     VideoController,
+    MultipleChoiceController,
     VideoResponseController,
     FillController,
-    FillresponseController
+    FillresponseController],
+  providers: [
+     
+      
+    AuthService,
   ],
-  providers: [],
 })
 export class AppModule { }

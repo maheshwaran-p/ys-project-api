@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class StaffService {
+
   constructor(
     @InjectRepository(Staff)
     private staffRepository: Repository<Staff>,
@@ -14,11 +15,14 @@ export class StaffService {
   ) { }
   async createStaff(createStaffDTO: CreateStaffDTO): Promise<Staff> {
     let { username, password, email } = createStaffDTO;
-    const user = await this.userService.createUser(username, password, email);
+    const user = await this.userService.createUser(username, password, email, true);
     return this.staffRepository.save({ user: user });
   }
 
-  async getStaffById(id: number): Promise<Staff> {
+  getStaffById(id: number): Promise<Staff> {
     return this.staffRepository.findOne({ id: id });
+  }
+  findStaffByUserId(userId: number): Promise<Staff> {
+    return this.staffRepository.findOne({ user: { id: userId } });
   }
 }

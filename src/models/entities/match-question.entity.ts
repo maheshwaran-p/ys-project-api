@@ -11,12 +11,12 @@ export class MatchQuestion {
     @Column({ nullable: false })
     question: string;
 
-    @OneToOne(() => MatchAnswer)
+    @OneToOne(() => MatchAnswer, { onDelete: 'CASCADE' })
     @JoinColumn()
     answer: MatchAnswer;
 
 
-    @ManyToOne(() => MatchEntity, match => match.id)
+    @ManyToOne(() => MatchEntity, match => match.id, { onDelete: 'CASCADE' })
     @JoinColumn()
     match: MatchEntity;
 }

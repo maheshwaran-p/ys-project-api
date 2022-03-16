@@ -1,32 +1,32 @@
-/*
-https://docs.nestjs.com/modules
-*/
-
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UtilsService } from 'src/utils/utils.service';
+import { CourseResponse } from './entities/course-reponse.entity';
 import { Course } from './entities/course.entity';
+import { FillInTheBlanks, FillResponse } from './entities/fill.entity';
+import { MatchAnswer } from './entities/match-answer.entity';
+import { MatchQuestion } from './entities/match-question.entity';
+import { MatchResponse } from './entities/match-response.entity';
+import { MatchEntity } from './entities/match.entity';
+import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
+import { MultipleChoice } from './entities/multiple-choice.entity';
+import { Order, OrderResponse } from './entities/order.entity';
 import { Staff } from './entities/staff.entity';
 import { Student } from './entities/student.entity';
 import { User } from './entities/user.entity';
+import { Video, VideoResponse } from './entities/video.entity';
+import { CourseService } from './services/course.service';
+import { FillintheblanksService } from './services/fillintheblanks.service';
+import { FillResponseService } from './services/fillintheblanksresponse.service';
+import { MatchService } from './services/match.service';
+import { MulitpleChoiceService } from './services/mulitplechoice.service';
+import { OrderService } from './services/order.service';
+import { OrderresponseService } from './services/orderresponse.service';
 import { StaffService } from './services/staff.service';
 import { StudentService } from './services/student.service';
 import { UserService } from './services/user.service';
-import { UtilsService } from '../utils/utils.service';
-import { UtilsModule } from 'src/utils/utils.module';
-import { MulitpleChoiceService } from './services/mulitplechoice.service';
-import { MultipleChoice } from './entities/multiple-choice.entity';
-import { CourseService } from './services/course.service';
-import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
-import { MatchService } from './services/match.service';
-import { MatchEntity } from './entities/match.entity';
-import { MatchAnswer } from './entities/match-answer.entity';
-import { MatchQuestion } from './entities/match-question.entity';
-import { FillInTheBlanks, FillResponse } from './entities/fill.entity';
-import { FillintheblanksService } from './services/fillintheblanks.service';
-import { FillintheBlanksResponseService } from './services/fillintheblanksresponse.service';
-import { VideoService } from './services/video.service';
 import { VideoResponseService } from './services/video-response.service';
-import { Video, VideoResponse } from './entities/video.entity';
+import { VideoService } from './services/video.service';
 
 @Module({
   imports: [
@@ -40,9 +40,54 @@ import { Video, VideoResponse } from './entities/video.entity';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User, Staff, Student, Course, MultipleChoice, MultipleChoiceResponse, MatchEntity, MatchAnswer, MatchQuestion, FillInTheBlanks, FillResponse, Video, VideoResponse]),
+    TypeOrmModule.forFeature([
+      User,
+      Staff,
+      Student,
+      Course,
+      MultipleChoice,
+      MultipleChoiceResponse,
+      MatchEntity,
+      MatchAnswer,
+      MatchQuestion,
+      MatchResponse,
+      FillInTheBlanks,
+      FillResponse,
+      VideoResponse,
+      Video,
+      CourseResponse,
+      Order,
+      OrderResponse
+    ]),
   ],
-  providers: [StaffService, UserService, StudentService, UtilsService, MulitpleChoiceService, CourseService, MatchService, FillintheblanksService, FillintheBlanksResponseService, VideoService, VideoResponseService],
-  exports: [StaffService, UserService, StudentService, MulitpleChoiceService, CourseService, MatchService, FillintheblanksService, FillintheBlanksResponseService, VideoService, VideoResponseService],
+  providers: [
+    StaffService,
+    UserService,
+    StudentService,
+    UtilsService,
+    MulitpleChoiceService,
+    CourseService,
+    MatchService,
+    VideoResponseService,
+    FillResponseService,
+    VideoService,
+    FillintheblanksService,
+    OrderService,
+    OrderresponseService
+  ],
+  exports: [
+    StaffService,
+    UserService,
+    StudentService,
+    MulitpleChoiceService,
+    CourseService,
+    MatchService,
+    VideoResponseService,
+    VideoService,
+    FillResponseService,
+    FillintheblanksService,
+    OrderService,
+    OrderresponseService
+  ],
 })
 export class ModelsModule { }

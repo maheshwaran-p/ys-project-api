@@ -5,22 +5,24 @@ https://docs.nestjs.com/providers#services
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
-import { FillResponse } from '../entities/fill.entity';
+import { FillInTheBlanks, FillResponse } from '../entities/fill.entity';
 
 @Injectable()
-export class FillintheBlanksResponseService {
+export class FillResponseService {
 
 
     constructor(
         @InjectRepository(FillResponse)
         private fillInTheBlanksResponseRepository: Repository<FillResponse>,
+        @InjectRepository(FillInTheBlanks)
+        private fillRespository: Repository<FillInTheBlanks>
 
     ) { }
 
 
-    fillresponse(questionId: number, studentId: number, answer: string) {
-
-        return this.fillInTheBlanksResponseRepository.save({ questionId: questionId, studentId: studentId, answer: answer })
+    async fillresponse(questionId: number, studentId: number, answer: string) {
+        const question = await this.fillRespository.findOne({ id: questionId });
+        return this.fillInTheBlanksResponseRepository.save({ questionId: questionId, studentId: studentId, answer: answer, isCorrect: question.answer === answer })
 
     }
 

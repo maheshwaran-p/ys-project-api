@@ -3,7 +3,7 @@ https://docs.nestjs.com/controllers#controllers
 */
 
 import { Body, Controller, Post } from '@nestjs/common';
-import { VideoQuestionDTO } from 'src/models/dto/video-question.dto';
+import { VideoQuestionDTO } from 'src/models/dto/video';
 import { VideoService } from 'src/models/services/video.service';
 
 @Controller('videoquestion')
