@@ -9,8 +9,7 @@ export class Student{
     firstName:string;
     @Column({name:'last_name'})
     lastName:string;
-    @Column({name:'username'})
-    username: string;
+   
     @OneToOne(()=>User,{onDelete:'CASCADE'})
     @JoinColumn()
     user:User;

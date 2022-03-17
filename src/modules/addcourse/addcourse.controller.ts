@@ -28,7 +28,7 @@ export class AddcourseController {
     @Post()
     async addCourse( @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
 
-        return await this.addCourseService.createCourse(addCourseDTO.title,addCourseDTO.description,addCourseDTO.course);
+        return await this.addCourseService.createCourse(addCourseDTO.title,addCourseDTO.description,addCourseDTO.course,addCourseDTO.stafflink);
 
     }
 

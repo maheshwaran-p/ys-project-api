@@ -10,5 +10,7 @@ export class AddCourse extends BaseEntity {
     description: string
     @Column()
     course: string
+    @Column()
+    stafflink:string
 
 }
