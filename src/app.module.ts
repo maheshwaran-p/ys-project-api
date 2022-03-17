@@ -1,3 +1,5 @@
+import { AddnotesModule } from './modules/addnotes/addnotes.module';
+import { AddnotesService } from './models/services/addnotes.service';
 import { AddcourseModule } from './modules/addcourse/addcourse.module';
 import { AddCourseService } from './models/services/addcourse.service';
 import { OrderresponseModule } from './modules/order-response/orderresponse.module';
@@ -25,6 +27,7 @@ import { AddcourseController } from './modules/addcourse/addcourse.controller';
 
 @Module({
   imports: [
+    AddnotesModule, 
     AddcourseModule, 
     OrderresponseModule, 
     OrderModule, 
@@ -51,6 +54,7 @@ import { AddcourseController } from './modules/addcourse/addcourse.controller';
     FillController,
     FillresponseController],
   providers: [
+       
       
      
       
