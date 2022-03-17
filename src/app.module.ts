@@ -1,3 +1,5 @@
+import { AddcourseModule } from './modules/addcourse/addcourse.module';
+import { AddCourseService } from './models/services/addcourse.service';
 import { OrderresponseModule } from './modules/order-response/orderresponse.module';
 import { OrderModule } from './modules/order/order.module';
 
@@ -19,9 +21,11 @@ import { FillresponseController } from './modules/fill-in-the-blanks-response/fi
 import { AuthService } from './modules/auth/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
+import { AddcourseController } from './modules/addcourse/addcourse.controller';
 
 @Module({
   imports: [
+    AddcourseModule, 
     OrderresponseModule, 
     OrderModule, 
     AuthModule,
@@ -37,6 +41,7 @@ import { MultipleChoiceController } from './modules/multipleChoice/multiplechoic
     })
   ],
   controllers: [
+    AddcourseController,
     AuthController,
     StudentController,
     StaffController,
@@ -46,6 +51,7 @@ import { MultipleChoiceController } from './modules/multipleChoice/multiplechoic
     FillController,
     FillresponseController],
   providers: [
+      
      
       
     AuthService,

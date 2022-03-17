@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Course } from "./course.entity";
 import { User } from "./user.entity";
 
@@ -7,7 +7,12 @@ export class Staff{
 
     @PrimaryGeneratedColumn()
     id:number;
-
+    @Column({name:'first_name'})
+    firstName:string;
+    @Column({name:'last_name'})
+    lastName:string;
+    @Column({name:'username'})
+    username: string;
     @OneToOne(()=>User,{onDelete:'CASCADE'})
     @JoinColumn()
     user:User;
