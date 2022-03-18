@@ -35,10 +35,10 @@ import { VideoService } from './services/video.service';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3306,
+      port: 3307,
       username: 'root',
       password: 'password',
-      database: 'ysprojectdb',
+      database: 'newys',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
