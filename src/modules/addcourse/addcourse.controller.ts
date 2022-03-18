@@ -2,7 +2,7 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AddCourseDTO } from 'src/models/dto/addcourse.dto';
 import { AddCourseService } from 'src/models/services/addcourse.service';
 
@@ -21,10 +21,17 @@ export class AddcourseController {
       
     ) {
        
-        return this.addCourseService.getcourses();
+        return this.addCourseService.getAllCourses();
     }
 
     
+ @Get(':id')
+findOne(@Param() params) {
+    console.log(params.id);
+
+  return this.addCourseService.findOneCourse(params.id);
+
+}
     @Post()
     async addCourse( @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
 

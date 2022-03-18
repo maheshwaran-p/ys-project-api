@@ -17,8 +17,12 @@ export class AddCourseService {
     ) { }
 
 
+    async findOneCourse( courseId:number) : Promise<any>{
 
-   async getcourses() : Promise<any>{
+        return await this.addCourseRespository.findOne(courseId);
+      }
+
+   async getAllCourses() : Promise<any>{
 
      return await this.addCourseRespository.find();
    }
