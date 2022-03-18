@@ -23,10 +23,9 @@ export class AddCourseService {
      return await this.addCourseRespository.find();
    }
 
-   async createCourse(title:string, description:string, course:string) : Promise<any>{
+   async createCourse(title:string, description:string, course:string,stafflink:string) : Promise<any>{
 
-        return await this.addCourseRespository.save({title:title,description:description,course:course})
-
+        return await this.addCourseRespository.save({title:title,description:description,course:course,stafflink:stafflink});
 
     }
 

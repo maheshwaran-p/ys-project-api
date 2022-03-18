@@ -16,8 +16,7 @@ export class StaffService {
   async createStaff(createStaffDTO: CreateStaffDTO): Promise<Staff> {
     let { username, password, email } = createStaffDTO;
     const user = await this.userService.createUser(username, password, email, true);
-    let { firstName, lastName } = createStaffDTO;
-    return this.staffRepository.save({firstName:firstName,lastName:lastName, user: user });
+    return this.staffRepository.save({ user: user });
   }
 
   getStaffById(id: number): Promise<Staff> {

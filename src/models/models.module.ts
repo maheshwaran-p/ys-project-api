@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UtilsService } from 'src/utils/utils.service';
 import { AddCourse } from './entities/addcourse.entity';
+import { AddNotes } from './entities/addnotes.entity';
 import { CourseResponse } from './entities/course-reponse.entity';
 import { Course } from './entities/course.entity';
 import { FillInTheBlanks, FillResponse } from './entities/fill.entity';
@@ -17,6 +18,7 @@ import { Student } from './entities/student.entity';
 import { User } from './entities/user.entity';
 import { Video, VideoResponse } from './entities/video.entity';
 import { AddCourseService } from './services/addcourse.service';
+import { AddnotesService } from './services/addnotes.service';
 import { CourseService } from './services/course.service';
 import { FillintheblanksService } from './services/fillintheblanks.service';
 import { FillResponseService } from './services/fillintheblanksresponse.service';
@@ -60,7 +62,8 @@ import { VideoService } from './services/video.service';
       CourseResponse,
       Order,
       OrderResponse,
-      AddCourse
+      AddCourse,
+      AddNotes
     ]),
   ],
   providers: [
@@ -77,7 +80,8 @@ import { VideoService } from './services/video.service';
     FillintheblanksService,
     OrderService,
     OrderresponseService,
-    AddCourseService
+    AddCourseService,
+    AddnotesService
   ],
   exports: [
     StaffService,
@@ -92,7 +96,8 @@ import { VideoService } from './services/video.service';
     FillintheblanksService,
     OrderService,
     OrderresponseService,
-    AddCourseService
+    AddCourseService,
+    AddnotesService
   ],
 })
 export class ModelsModule { }

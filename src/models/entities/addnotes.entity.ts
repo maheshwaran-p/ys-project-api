@@ -3,14 +3,13 @@ import { BaseEntity } from "./base.entity"
 
 
 @Entity()
-export class AddCourse extends BaseEntity {
+export class AddNotes extends BaseEntity {
     @Column()
     title: string
     @Column()
     description: string
     @Column()
-    course: string
-    @Column()
-    stafflink:string
+    link: string
+  
 
 }
