@@ -6,7 +6,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AddNotesDTO } from 'src/models/dto/addnotes.dto';
 import { AddnotesService } from 'src/models/services/addnotes.service';
 
-@Controller('/note')
+@Controller('/addnote')
 export class AddnotesController {
 
     constructor(
@@ -18,7 +18,7 @@ export class AddnotesController {
 
 
 
-    @Get('')
+    @Get('/response')
     getcourses(
         addNotesDTO:AddNotesDTO
       

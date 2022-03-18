@@ -24,6 +24,7 @@ import { AuthService } from './modules/auth/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
 import { AddcourseController } from './modules/addcourse/addcourse.controller';
+import { AddnotesController } from './modules/addnotes/addnotes.controller';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { AddcourseController } from './modules/addcourse/addcourse.controller';
     })
   ],
   controllers: [
+    AddnotesController,
     AddcourseController,
     AuthController,
     StudentController,
