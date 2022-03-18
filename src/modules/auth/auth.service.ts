@@ -17,10 +17,13 @@ export class AuthService {
     async login(username: string, password: string): Promise<UserContext> {
         const user = await this.userService.findUserByName(username);
         if (user && user.password === password) {
+
+            console.log('correct');
             const context = new UserContext()
             const payload = { userId: user.id, isStaff: user.isStaff }
             context.userId = user.id;
             context.isStaff = user.isStaff;
+            context.username=user.username;
             context.accessToken = this.jwtService.sign(payload);
             return context;
 

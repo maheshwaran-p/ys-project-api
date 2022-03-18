@@ -9,10 +9,7 @@ app.use(cors());
 
   await app.listen(4000);
 
-  
-
  
-  
   
 }
 
