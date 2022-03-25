@@ -2,7 +2,8 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Controller } from '@nestjs/common';
+import { Body, Controller } from '@nestjs/common';
+import { MarkDTO } from 'src/models/dto/marks.dto';
 import { MarksService } from 'src/models/services/marks.service';
 
 @Controller()
@@ -14,10 +15,9 @@ export class MarksController {
     ) { }
 
 
-   async addMarks(){
+   async addMarks(@Body() markDTO:MarkDTO):Promise<any>{
 
-    
-
+return await this.marksService.addMarks(markDTO);
 
     }
 

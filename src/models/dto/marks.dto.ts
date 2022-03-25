@@ -1,10 +1,21 @@
-export class  MarksDTO{
+
+
+export class StudentMark{
+
+    studentId:number;
+    mark:number;
+}
+
+export class  MarkDTO{
   
+    addcourseId:number;
     
-    total:number
-    mark:number
-    addcourseId:number
-    studentId:number
+    total:number;
+
+    studentMark:StudentMark[];
+   
+    
+  
 
 
 }

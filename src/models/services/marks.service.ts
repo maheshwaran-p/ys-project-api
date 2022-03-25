@@ -17,6 +17,12 @@ export class MarksService {
        
     ) { }
 
+    async addMarks(markDTO:any):Promise<any>{
 
+        console.log(markDTO);
+
+        return this.marksRespository.save(markDTO);
+
+    }
 
 }
