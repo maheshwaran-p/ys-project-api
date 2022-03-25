@@ -1,3 +1,6 @@
+import { MarksModule } from './modules/marks/marks.module';
+import { MarksController } from './modules/marks/marks.controller';
+import { MarksService } from './models/services/marks.service';
 import { AddnotesModule } from './modules/addnotes/addnotes.module';
 import { AddnotesService } from './models/services/addnotes.service';
 import { AddcourseModule } from './modules/addcourse/addcourse.module';
@@ -28,6 +31,7 @@ import { AddnotesController } from './modules/addnotes/addnotes.controller';
 
 @Module({
   imports: [
+    MarksModule, 
     AddnotesModule, 
     AddcourseModule, 
     OrderresponseModule, 
@@ -45,6 +49,7 @@ import { AddnotesController } from './modules/addnotes/addnotes.controller';
     })
   ],
   controllers: [
+        MarksController, 
     AddnotesController,
     AddcourseController,
     AuthController,
@@ -56,10 +61,6 @@ import { AddnotesController } from './modules/addnotes/addnotes.controller';
     FillController,
     FillresponseController],
   providers: [
-       
-      
-     
-      
     AuthService,
   ],
 })

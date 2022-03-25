@@ -6,6 +6,7 @@ import { AddNotes } from './entities/addnotes.entity';
 import { CourseResponse } from './entities/course-reponse.entity';
 import { Course } from './entities/course.entity';
 import { FillInTheBlanks, FillResponse } from './entities/fill.entity';
+import { Marks } from './entities/marks.entity';
 import { MatchAnswer } from './entities/match-answer.entity';
 import { MatchQuestion } from './entities/match-question.entity';
 import { MatchResponse } from './entities/match-response.entity';
@@ -22,6 +23,7 @@ import { AddnotesService } from './services/addnotes.service';
 import { CourseService } from './services/course.service';
 import { FillintheblanksService } from './services/fillintheblanks.service';
 import { FillResponseService } from './services/fillintheblanksresponse.service';
+import { MarksService } from './services/marks.service';
 import { MatchService } from './services/match.service';
 import { MulitpleChoiceService } from './services/mulitplechoice.service';
 import { OrderService } from './services/order.service';
@@ -63,7 +65,8 @@ import { VideoService } from './services/video.service';
       Order,
       OrderResponse,
       AddCourse,
-      AddNotes
+      AddNotes,
+      Marks
     ]),
   ],
   providers: [
@@ -81,7 +84,8 @@ import { VideoService } from './services/video.service';
     OrderService,
     OrderresponseService,
     AddCourseService,
-    AddnotesService
+    AddnotesService,
+    MarksService
   ],
   exports: [
     StaffService,
@@ -97,7 +101,8 @@ import { VideoService } from './services/video.service';
     OrderService,
     OrderresponseService,
     AddCourseService,
-    AddnotesService
+    AddnotesService,
+    MarksService
   ],
 })
 export class ModelsModule { }

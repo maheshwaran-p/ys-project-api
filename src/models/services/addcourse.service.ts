@@ -22,6 +22,19 @@ export class AddCourseService {
         return await this.addCourseRespository.findOne(courseId);
       }
 
+      async deleteOneCourse( courseId:number) : Promise<any>{
+
+       return await this.addCourseRespository.delete(courseId);
+      }
+
+
+      async getCourse( courseId:number) : Promise<any>{
+
+      //  return await this.addCourseRespository.delete(courseId);
+
+      return await this.addCourseRespository.findOne(courseId);
+       }
+
    async getAllCourses() : Promise<any>{
 
      return await this.addCourseRespository.find();

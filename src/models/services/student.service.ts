@@ -14,12 +14,17 @@ export class StudentService {
         private userService: UserService,
     ) { }
 
+  async getStudents(){
+
+    return await this.studentRespository.find();
+  }
+
     async createStudent(createStudentDTO: CreateStudentDTO): Promise<Student> {
 
         let { username, password, email } = createStudentDTO;
         const user = await this.userService.createUser(username, password, email);
         let { firstName, lastName } = createStudentDTO;
-        return this.studentRespository.save({ firstName: firstName, lastName: lastName, user: user });
+        return this.studentRespository.save({ firstName: firstName, lastName: lastName,username:username, user: user });
     }
 
     async findStudentByUserId(userId: number): Promise<Student> {
