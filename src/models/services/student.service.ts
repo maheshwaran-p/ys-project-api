@@ -30,4 +30,12 @@ export class StudentService {
     async findStudentByUserId(userId: number): Promise<Student> {
         return this.studentRespository.findOne({ user: { id: userId } })
     }
+
+    async findStudentByUserName(username: string): Promise<Student> {
+
+       console.log(await this.studentRespository.findOne({username }));
+      return await this.studentRespository.findOne({username });
+      
+
+  }
 }

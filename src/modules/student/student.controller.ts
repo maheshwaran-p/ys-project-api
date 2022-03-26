@@ -25,4 +25,12 @@ export class StudentController {
 
     }
 
+    @Get('/get/name/:username')
+   async getStudent( @Param() params){
+
+        console.log(params.username);
+        return await this.studentService.findStudentByUserName(params.username);
+    }
+
 }
+
