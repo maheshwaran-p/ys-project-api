@@ -3,4 +3,5 @@ export class AddCourseDTO {
     description: string
     course: string
     stafflink:string
+    
 }

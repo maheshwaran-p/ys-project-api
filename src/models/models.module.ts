@@ -16,6 +16,7 @@ import { MultipleChoice } from './entities/multiple-choice.entity';
 import { Order, OrderResponse } from './entities/order.entity';
 import { Staff } from './entities/staff.entity';
 import { Student } from './entities/student.entity';
+import { Total } from './entities/total.entity';
 import { User } from './entities/user.entity';
 import { Video, VideoResponse } from './entities/video.entity';
 import { AddCourseService } from './services/addcourse.service';
@@ -30,6 +31,7 @@ import { OrderService } from './services/order.service';
 import { OrderresponseService } from './services/orderresponse.service';
 import { StaffService } from './services/staff.service';
 import { StudentService } from './services/student.service';
+import { TotalService } from './services/total.service';
 import { UserService } from './services/user.service';
 import { VideoResponseService } from './services/video-response.service';
 import { VideoService } from './services/video.service';
@@ -66,7 +68,8 @@ import { VideoService } from './services/video.service';
       OrderResponse,
       AddCourse,
       AddNotes,
-      Marks
+      Marks,
+      Total
     ]),
   ],
   providers: [
@@ -85,7 +88,8 @@ import { VideoService } from './services/video.service';
     OrderresponseService,
     AddCourseService,
     AddnotesService,
-    MarksService
+    MarksService,
+    TotalService
   ],
   exports: [
     StaffService,
@@ -102,7 +106,8 @@ import { VideoService } from './services/video.service';
     OrderresponseService,
     AddCourseService,
     AddnotesService,
-    MarksService
+    MarksService,
+    TotalService
   ],
 })
 export class ModelsModule { }

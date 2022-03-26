@@ -1,21 +1,14 @@
 import { Column, Entity, ManyToOne } from "typeorm";
 import { AddCourse } from "./addcourse.entity";
 import { BaseEntity } from "./base.entity";
-import { Student } from "./student.entity";
 
 
 @Entity()
-export class Marks extends BaseEntity{
+export class Total extends BaseEntity{
 
-    @Column()
-    mark:number
-    
-    @ManyToOne(() => Student, student => student.id)
-    student:Student
     @ManyToOne(()=>AddCourse, addcourse=>addcourse.id)
     addcourse:AddCourse
-
-
-
-
+    @Column({ nullable: true })
+    total:number
+    
 }

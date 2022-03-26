@@ -1,3 +1,5 @@
+import { TotalModule } from './modules/total/total.module';
+import { TotalService } from './models/services/total.service';
 import { MarksModule } from './modules/marks/marks.module';
 import { MarksController } from './modules/marks/marks.controller';
 import { MarksService } from './models/services/marks.service';
@@ -28,9 +30,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { MultipleChoiceController } from './modules/multipleChoice/multiplechoice.controller';
 import { AddcourseController } from './modules/addcourse/addcourse.controller';
 import { AddnotesController } from './modules/addnotes/addnotes.controller';
+import { TotalController } from './modules/total/total.controller';
 
 @Module({
   imports: [
+    TotalModule, 
     MarksModule, 
     AddnotesModule, 
     AddcourseModule, 
@@ -49,7 +53,8 @@ import { AddnotesController } from './modules/addnotes/addnotes.controller';
     })
   ],
   controllers: [
-        MarksController, 
+    TotalController,
+    MarksController, 
     AddnotesController,
     AddcourseController,
     AuthController,
@@ -61,6 +66,7 @@ import { AddnotesController } from './modules/addnotes/addnotes.controller';
     FillController,
     FillresponseController],
   providers: [
+      
     AuthService,
   ],
 })

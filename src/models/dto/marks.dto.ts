@@ -10,7 +10,7 @@ export class  MarkDTO{
   
     addcourseId:number;
     
-    total:number;
+  
 
     studentMark:StudentMark[];
    

@@ -5,6 +5,7 @@ https://docs.nestjs.com/providers#services
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
+import { MarkDTO } from '../dto/marks.dto';
 import { Marks } from '../entities/marks.entity';
 
 @Injectable()
@@ -17,11 +18,25 @@ export class MarksService {
        
     ) { }
 
-    async addMarks(markDTO:any):Promise<any>{
+    async addMarks(markDTO:MarkDTO):Promise<any>{
 
-        console.log(markDTO);
+       const query = this.marksRespository.createQueryBuilder()
+                    .insert()
+                    .into(Marks)
+                    .values(
+                        markDTO.studentMark.map(
+                            e=>({
+                                mark:e.mark,
+                                addcourse: {id:markDTO.addcourseId},
+                                student:{id:e.studentId}
+                            })
+                        )
+                    )
 
-        return this.marksRespository.save(markDTO);
+
+                    return query.execute();
+
+      //  return this.marksRespository.save(markDTO);
 
     }
 
