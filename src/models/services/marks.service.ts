@@ -4,7 +4,7 @@ https://docs.nestjs.com/providers#services
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { createQueryBuilder } from 'typeorm';
+import { Connection, createQueryBuilder } from 'typeorm';
 import { Repository } from 'typeorm/repository/Repository';
 import { MarkDTO } from '../dto/marks.dto';
 import { Marks } from '../entities/marks.entity';
@@ -16,24 +16,67 @@ export class MarksService {
     constructor(
         @InjectRepository(Marks)
         private marksRespository: Repository<Marks>,
+         private connection: Connection,
        
     ) { }
 
 
     async percentage(studentId:number):Promise<any>{
 
-        // let cid = this.marksRespository.findOne({studentId})
+    const query = this.marksRespository.createQueryBuilder('marks').
+    leftJoin('marks.addcourse','addcourse').addSelect(['addcourse.title','addcourse.description','addcourse.total'])
+    //leftJoin('total.addcourse','total').addSelect(['total.total',])
+    ;
 
-        // console.log(cid);
+    query.where('marks.studentId = :studentId', {
+        studentId: studentId,
+      });
+
+     return query.execute();
 
 
-    //     const user = await createQueryBuilder("addcourse")
-    // .leftJoinAndSelect("addcourse.title", "title")
-    // .where("addcourse.title = :title", { title: "day1" })
+//     const usersWithRoles = await this.connection
+// .getRepository(Marks)
+// .createQueryBuilder("marks")
+// .leftJoinAndSelect("marks.addcourse", "addcourse")
+// .leftJoinAndSelect("marks.addcourse", "total.addcourse")
+// .getMany();
+
+
+
+// // //console.log(marks);
+
+// console.log(usersWithRoles);
+//return usersWithRoles.execute();
+
+
+
+
+    // return await this.marksRespository.createQueryBuilder('c')
+    // .select(['c.addcourse', 'c.mark','c.student' ])
+    // .leftJoin('c.addcourse', 'addcourse')
+    // .where('c.addcourse = :id', { studentId })
     // .getOne();
 
-    //     console.log(user);
+    // const user = await createQueryBuilder("marks")
+    // .leftJoinAndSelect("marks.addcourse", "addcourse")
+    // .where("marks.addcourse = :title", { title: "day1" })
+    // .getOne();
+
+
+    //console.log(user);
     }
+
+//     const queryBuilder = this.audienceRepository
+//     .createQueryBuilder('audience')
+//     .leftJoin('audience.user', 'user')
+//     .addSelect(['user.id', 'user.firstName', 'user.lastName']);
+//   queryBuilder.where('audience.accountId = :accountId', {
+//     accountId: accountId,
+//   });
+//   queryBuilder.andWhere('audience.status != :status', {
+//     status: Status.DELETED,
+//   });
 
     async addMarks(markDTO:MarkDTO):Promise<any>{
 

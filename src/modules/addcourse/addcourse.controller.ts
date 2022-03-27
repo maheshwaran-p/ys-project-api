@@ -57,4 +57,13 @@ findOne(@Param() params) {
 
 
 
+    @Post('/total/:id')
+    updateTotal(@Param() params , @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
+
+        // console.log(params.id);
+        return this.addCourseService.updateTotal(params.id,addCourseDTO.total);
+
+    }
+
+
 }

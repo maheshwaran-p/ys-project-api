@@ -3,5 +3,6 @@ export class AddCourseDTO {
     description: string
     course: string
     stafflink:string
+    total:number
     
 }
