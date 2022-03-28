@@ -33,4 +33,21 @@ export class MarksController {
 
     }
 
+
+    @Get('/get/:id')
+    getCourseMarks(@Param() params){
+
+        return this.marksService.getCourseMarks(params.id);
+
+    }
+
+
+    @Get('/leader')
+    leaderboard(){
+
+        return this.marksService.leaderboard();
+
+    }
+
+
 }

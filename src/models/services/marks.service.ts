@@ -4,7 +4,7 @@ https://docs.nestjs.com/providers#services
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Connection, createQueryBuilder } from 'typeorm';
+import { Connection, createQueryBuilder, getRepository } from 'typeorm';
 import { Repository } from 'typeorm/repository/Repository';
 import { MarkDTO } from '../dto/marks.dto';
 import { Marks } from '../entities/marks.entity';
@@ -99,5 +99,55 @@ export class MarksService {
       //  return this.marksRespository.save(markDTO);
 
     }
+
+
+
+  async  leaderboard():Promise<any>{
+
+
+   
+   
+
+
+    // const query = await this.marksRespository.createQueryBuilder('marks').
+    // leftJoin('marks.student','student').addSelect(['student.username','student.firstName','student.lastName'])
+    
+    // ;
+
+    const MarkSum = await 
+    this.marksRespository
+    
+    .createQueryBuilder("user")
+    .leftJoin('user.student','student').addSelect(['student.username','student.firstName','student.lastName'])
+    .select("user.student")
+    .addSelect("student.username")
+    .addSelect("student.firstName")
+    .addSelect("student.lastName")
+    .addSelect("SUM(user.mark)","sum")
+    .groupBy("user.student")
+    .getRawMany();
+
+    MarkSum.sort(function(a, b) {
+        return b.sum - a.sum;
+      }); 
+
+
+  //  console.log(MarkSum);
+ return MarkSum;
+
+    }
+
+
+
+   async getCourseMarks(CourseId:number):Promise<any>{
+
+    let marks = await this.marksRespository.find({where:{addcourse:CourseId}}) ;
+
+    //console.log(marks);
+    return marks;
+
+   }
+
+
 
 }
