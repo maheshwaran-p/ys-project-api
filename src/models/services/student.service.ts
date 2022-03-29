@@ -38,4 +38,13 @@ export class StudentService {
       
 
   }
+
+  async resetpassword(resetDTO:any):Promise<any>{
+
+    
+
+    return await this.userService.resetPassword(resetDTO.email,resetDTO.username,resetDTO.password);
+
+
+  }
 }

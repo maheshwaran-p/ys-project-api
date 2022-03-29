@@ -2,6 +2,7 @@
 import { Get, Param, Post, Put } from '@nestjs/common';
 import { Body, Controller } from '@nestjs/common';
 import { CreateStudentDTO } from 'src/models/dto/create-student.dto';
+import { ResetDTO } from 'src/models/dto/reset.dto';
 import { Student } from 'src/models/entities/student.entity';
 import { StudentService } from 'src/models/services/student.service';
 
@@ -30,6 +31,17 @@ export class StudentController {
 
         console.log(params.username);
         return await this.studentService.findStudentByUserName(params.username);
+    }
+
+
+    @Post('/reset')
+  async  resetpassword(@Body() resetDTO:ResetDTO):Promise<any>{
+
+    return this.studentService.resetpassword(resetDTO);
+
+
+
+        
     }
 
 }

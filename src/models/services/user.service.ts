@@ -44,6 +44,24 @@ export class UserService {
   
   }
 
+  async resetPassword(email:string,username:string,password:string) : Promise<any>{
+
+    let reset = await this.userRepository.findOne({email:email});
+
+    if(reset==undefined){
+     
+    
+    return null;
+  }
+
+    reset.username=username;
+    reset.password=password;
+
+  return await this.userRepository.save(reset);
+
+
+  }
+
   findUserByName(username: string): Promise<User | undefined> {
 
    
