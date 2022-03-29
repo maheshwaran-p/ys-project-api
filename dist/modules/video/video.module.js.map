@@ -1,0 +1,1 @@
+{"version":3,"file":"video.module.js","sourceRoot":"","sources":["../../../src/modules/video/video.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,8DAAwD;AACxD,yDAAqD;AAQrD,IAAa,WAAW,GAAxB,MAAa,WAAW;CAAI,CAAA;AAAf,WAAW;IANvB,IAAA,eAAM,EAAC;QACJ,OAAO,EAAE,CAAC,4BAAY,CAAC;QACvB,WAAW,EAAE,CAAC,kCAAe,CAAC;QAC9B,SAAS,EAAE,EACV;KACJ,CAAC;GACW,WAAW,CAAI;AAAf,kCAAW"}
