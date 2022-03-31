@@ -20,6 +20,7 @@ export class UserService {
     isStaff: boolean = false
   ): Promise<User> {
 
+  
    let namecheck = await this.userRepository.findOne({ username: username });
 
    //console.log(namecheck);

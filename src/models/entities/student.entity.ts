@@ -11,6 +11,10 @@ export class Student{
     lastName:string;
     @Column({name:'username'})
     username:string
+    @Column()
+    password:string
+    @Column()
+    email:string
     @OneToOne(()=>User,{onDelete:'CASCADE'})
     @JoinColumn()
     user:User;

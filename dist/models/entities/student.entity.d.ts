@@ -4,5 +4,7 @@ export declare class Student {
     firstName: string;
     lastName: string;
     username: string;
+    password: string;
+    email: string;
     user: User;
 }

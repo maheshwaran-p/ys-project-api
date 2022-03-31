@@ -5,6 +5,7 @@ export declare class Staff {
     firstName: string;
     lastName: string;
     username: string;
+    password: string;
     user: User;
     courses: Course[];
     allowedCourses: Course[];

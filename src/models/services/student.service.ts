@@ -23,8 +23,14 @@ export class StudentService {
 
         let { username, password, email } = createStudentDTO;
         const user = await this.userService.createUser(username, password, email);
-        let { firstName, lastName } = createStudentDTO;
-        return this.studentRespository.save({ firstName: firstName, lastName: lastName,username:username, user: user });
+        if(user!=null){
+        let { firstName, lastName ,username,email,password} = createStudentDTO;
+        return this.studentRespository.save({ firstName: firstName, lastName: lastName,username:username, user: user });}
+        else{
+          console.log('cannot create student');
+          return null;
+        }
+
     }
 
     async findStudentByUserId(userId: number): Promise<Student> {

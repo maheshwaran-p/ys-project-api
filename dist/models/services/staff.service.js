@@ -26,7 +26,13 @@ let StaffService = class StaffService {
     async createStaff(createStaffDTO) {
         let { username, password, email } = createStaffDTO;
         const user = await this.userService.createUser(username, password, email, true);
-        return this.staffRepository.save({ user: user });
+        if (user != null) {
+            return this.staffRepository.save({ user: user });
+        }
+        else {
+            console.log('cannot create staff');
+            return null;
+        }
     }
     getStaffById(id) {
         return this.staffRepository.findOne({ id: id });

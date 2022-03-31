@@ -13,6 +13,9 @@ export class Staff{
     lastName:string;
     @Column({name:'username'})
     username: string;
+    @Column()
+    password:string;
+
     @OneToOne(()=>User,{onDelete:'CASCADE'})
     @JoinColumn()
     user:User;
