@@ -29,14 +29,11 @@ let StudentService = class StudentService {
     async createStudent(createStudentDTO) {
         let { username, password, email } = createStudentDTO;
         const user = await this.userService.createUser(username, password, email);
-        if (user != null) {
-            let { firstName, lastName, username, email, password } = createStudentDTO;
-            return this.studentRespository.save({ firstName: firstName, lastName: lastName, username: username, user: user });
-        }
-        else {
+        if (user == null) {
             console.log('cannot create student');
-            return null;
         }
+        let { firstName, lastName } = createStudentDTO;
+        return this.studentRespository.save({ firstName: firstName, lastName: lastName, username: username, user: user });
     }
     async findStudentByUserId(userId) {
         return this.studentRespository.findOne({ user: { id: userId } });

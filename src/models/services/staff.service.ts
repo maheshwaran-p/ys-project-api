@@ -16,13 +16,11 @@ export class StaffService {
   async createStaff(createStaffDTO: CreateStaffDTO): Promise<Staff> {
     let { username, password, email } = createStaffDTO;
     const user = await this.userService.createUser(username, password, email, true);
-    if(user!=null){
-    return this.staffRepository.save({ user: user });
-    }
-    else{
+    if(user==null){
       console.log('cannot create staff');
-      return null;
+  
     }
+    return this.staffRepository.save({ user: user });
   }
 
   getStaffById(id: number): Promise<Staff> {

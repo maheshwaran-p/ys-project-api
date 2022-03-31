@@ -23,7 +23,7 @@ export class UserService {
   
    let namecheck = await this.userRepository.findOne({ username: username });
 
-   //console.log(namecheck);
+   console.log(namecheck);
 
     if(namecheck!=undefined){
       console.log("name already exist");
@@ -42,6 +42,7 @@ export class UserService {
 
   }
 
+  
   
   }
 
