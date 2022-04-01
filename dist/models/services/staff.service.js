@@ -28,8 +28,13 @@ let StaffService = class StaffService {
         const user = await this.userService.createUser(username, password, email, true);
         if (user == null) {
             console.log('cannot create staff');
+            let dummy = new staff_entity_1.Staff();
+            dummy.user = null;
+            return dummy;
         }
-        return this.staffRepository.save({ user: user });
+        else {
+            return this.staffRepository.save({ user: user });
+        }
     }
     getStaffById(id) {
         return this.staffRepository.findOne({ id: id });

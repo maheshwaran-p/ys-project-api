@@ -25,7 +25,6 @@ let UserService = class UserService {
     }
     async createUser(username, password, email, isStaff = false) {
         let namecheck = await this.userRepository.findOne({ username: username });
-        console.log(namecheck);
         if (namecheck != undefined) {
             console.log("name already exist");
             return null;

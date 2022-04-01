@@ -18,9 +18,18 @@ export class StaffService {
     const user = await this.userService.createUser(username, password, email, true);
     if(user==null){
       console.log('cannot create staff');
-  
+      let dummy= new Staff();
+     
+      dummy.user=null;
+     
+      return dummy;
     }
-    return this.staffRepository.save({ user: user });
+    else{
+      return this.staffRepository.save({ user: user });
+
+    }
+
+   
   }
 
   getStaffById(id: number): Promise<Staff> {

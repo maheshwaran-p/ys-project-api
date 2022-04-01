@@ -21,15 +21,29 @@ export class StudentService {
 
     async createStudent(createStudentDTO: CreateStudentDTO): Promise<Student> {
 
+
         let { username, password, email } = createStudentDTO;
         const user = await this.userService.createUser(username, password, email);
+        let { firstName, lastName } = createStudentDTO;
+        
         if(user==null){
           console.log('cannot create student');
+         
+          let dummy= new Student();
+          dummy.firstName=null;
+          dummy.lastName=null;
+          dummy.username=null;
+          dummy.user=null;
+         
+          return dummy;
           
         }
+        else{
+          return this.studentRespository.save({ firstName: firstName, lastName: lastName,username:username, user: user });
+        }
      
-        let { firstName, lastName } = createStudentDTO;
-       return this.studentRespository.save({ firstName: firstName, lastName: lastName,username:username, user: user });
+      
+  
       
       }
       

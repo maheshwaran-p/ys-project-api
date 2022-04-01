@@ -20,22 +20,6 @@ __decorate([
     __metadata("design:type", Number)
 ], Staff.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'first_name' }),
-    __metadata("design:type", String)
-], Staff.prototype, "firstName", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'last_name' }),
-    __metadata("design:type", String)
-], Staff.prototype, "lastName", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'username' }),
-    __metadata("design:type", String)
-], Staff.prototype, "username", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Staff.prototype, "password", void 0);
-__decorate([
     (0, typeorm_1.OneToOne)(() => user_entity_1.User, { onDelete: 'CASCADE' }),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", user_entity_1.User)
