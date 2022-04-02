@@ -32,6 +32,15 @@ let MarksService = class MarksService {
         return query.execute();
     }
     async addMarks(markDTO) {
+        let r = this.marksRespository.findOne(markDTO.addcourseId);
+        if (r != undefined) {
+            console.log('marks already posted');
+            const q = await (0, typeorm_2.getConnection)()
+                .createQueryBuilder()
+                .delete()
+                .from(marks_entity_1.Marks)
+                .where("addcourse= :id", { id: markDTO.addcourseId }).execute();
+        }
         const query = this.marksRespository.createQueryBuilder()
             .insert()
             .into(marks_entity_1.Marks)

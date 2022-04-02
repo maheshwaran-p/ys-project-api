@@ -4,7 +4,7 @@ https://docs.nestjs.com/providers#services
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Connection, createQueryBuilder, getRepository } from 'typeorm';
+import { Connection, createQueryBuilder, getConnection, getRepository } from 'typeorm';
 import { Repository } from 'typeorm/repository/Repository';
 import { MarkDTO } from '../dto/marks.dto';
 import { Marks } from '../entities/marks.entity';
@@ -80,7 +80,22 @@ export class MarksService {
 
     async addMarks(markDTO:MarkDTO):Promise<any>{
 
-       const query = this.marksRespository.createQueryBuilder()
+        let r= this.marksRespository.findOne(markDTO.addcourseId)
+
+        if(r!=undefined){
+      console.log('marks already posted');
+          
+
+    const q=  await getConnection()
+    .createQueryBuilder()
+    .delete()
+    .from(Marks)
+    .where("addcourse= :id", { id: markDTO.addcourseId }).execute()
+          // return q.execute();
+        }
+
+
+      const query = this.marksRespository.createQueryBuilder()
                     .insert()
                     .into(Marks)
                     .values(
@@ -95,9 +110,9 @@ export class MarksService {
 
 
                     return query.execute();
-
+                        
       //  return this.marksRespository.save(markDTO);
-
+                        
     }
 
 
