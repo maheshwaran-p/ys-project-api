@@ -32,8 +32,9 @@ let MarksService = class MarksService {
         return query.execute();
     }
     async addMarks(markDTO) {
-        let r = this.marksRespository.findOne(markDTO.addcourseId);
-        if (r != undefined) {
+        let r = await this.marksRespository.find({ where: { addcourse: markDTO.addcourseId } });
+        console.log(r.length);
+        if (r.length != 0) {
             console.log('marks already posted');
             const q = await (0, typeorm_2.getConnection)()
                 .createQueryBuilder()
@@ -41,15 +42,15 @@ let MarksService = class MarksService {
                 .from(marks_entity_1.Marks)
                 .where("addcourse= :id", { id: markDTO.addcourseId }).execute();
         }
-        const query = this.marksRespository.createQueryBuilder()
+        const q = await this.marksRespository.createQueryBuilder()
             .insert()
             .into(marks_entity_1.Marks)
             .values(markDTO.studentMark.map(e => ({
             mark: e.mark,
             addcourse: { id: markDTO.addcourseId },
             student: { id: e.studentId }
-        })));
-        return query.execute();
+        }))).execute();
+        return q;
     }
     async leaderboard() {
         const MarkSum = await this.marksRespository

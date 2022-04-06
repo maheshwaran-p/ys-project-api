@@ -22,14 +22,31 @@ let TotalService = class TotalService {
         this.totalRespository = totalRespository;
     }
     async updateTotal(totalDto) {
-        this.totalRespository
-            .createQueryBuilder()
-            .insert()
-            .into(total_entity_1.Total)
-            .values({
-            addcourse: { id: totalDto.addcourseId }, total: totalDto.total
-        })
-            .execute();
+        console.log(totalDto.total);
+        let r = await this.totalRespository.find({ where: { addcourse: totalDto.addcourseId } });
+        if (r.length == 0) {
+            const q = await this.totalRespository
+                .createQueryBuilder()
+                .insert()
+                .into(total_entity_1.Total)
+                .values({
+                addcourse: { id: totalDto.addcourseId },
+                total: totalDto.total
+            })
+                .execute();
+            return q;
+        }
+        else {
+            const q = await this.totalRespository
+                .createQueryBuilder()
+                .update(total_entity_1.Total)
+                .set({
+                addcourse: { id: totalDto.addcourseId },
+                total: totalDto.total
+            })
+                .execute();
+            return q;
+        }
     }
 };
 TotalService = __decorate([

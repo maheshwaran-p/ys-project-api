@@ -20,18 +20,45 @@ export class TotalService {
 
    async updateTotal(totalDto:any):Promise<any>{
 
-     this.totalRespository
+
+
+    console.log(totalDto.total);
+
+    let r= await this.totalRespository.find({where:{addcourse:totalDto.addcourseId}})
+    if(r.length==0)
+{
+   const q = await  this.totalRespository
     .createQueryBuilder()
     .insert()
     .into(Total)
     .values({
-         addcourse: {id:totalDto.addcourseId}, total: totalDto.total 
+         addcourse: {id:totalDto.addcourseId},
+         total: totalDto.total 
        
     })
     .execute();
+    return q;
 
     }
+    else{
 
+
+        const q = await  this.totalRespository
+        .createQueryBuilder()
+        .update(Total)
+        .set({
+             addcourse: {id:totalDto.addcourseId},
+             total: totalDto.total 
+             
+           
+        })
+        .execute();
+        return q;
+    }
+
+}
+
+   
     //return this.totalRespository.save({addcourse:addcourseId,total:total})
 
 }

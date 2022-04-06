@@ -10,9 +10,9 @@ export class Marks extends BaseEntity{
     @Column()
     mark:number
     
-    @ManyToOne(() => Student, student => student.id)
+    @ManyToOne(() => Student, student => student.id,{ onDelete: 'CASCADE' })
     student:Student
-    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id)
+    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id,)
     addcourse:AddCourse
 
 

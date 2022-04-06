@@ -21,7 +21,7 @@ let TotalController = class TotalController {
         this.totalService = totalService;
     }
     async updateTotal(totalDto) {
-        return this.totalService.updateTotal(totalDto);
+        return await this.totalService.updateTotal(totalDto);
     }
 };
 __decorate([

@@ -6,7 +6,7 @@ import { BaseEntity } from "./base.entity";
 @Entity()
 export class Total extends BaseEntity{
 
-    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id)
+    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id,{ onDelete: 'CASCADE' })
     addcourse:AddCourse
     @Column({ nullable: true })
     total:number

@@ -80,9 +80,10 @@ export class MarksService {
 
     async addMarks(markDTO:MarkDTO):Promise<any>{
 
-        let r= this.marksRespository.findOne(markDTO.addcourseId)
+        let r= await this.marksRespository.find({where:{addcourse:markDTO.addcourseId}})
+        console.log(r.length)
 
-        if(r!=undefined){
+        if(r.length!=0){
       console.log('marks already posted');
           
 
@@ -95,7 +96,8 @@ export class MarksService {
         }
 
 
-      const query = this.marksRespository.createQueryBuilder()
+
+     const q= await this.marksRespository.createQueryBuilder()
                     .insert()
                     .into(Marks)
                     .values(
@@ -106,10 +108,11 @@ export class MarksService {
                                 student:{id:e.studentId}
                             })
                         )
-                    )
+                    ).execute();
 
+                    return q;
 
-                    return query.execute();
+                  
                         
       //  return this.marksRespository.save(markDTO);
                         
@@ -142,6 +145,7 @@ export class MarksService {
     .groupBy("user.student")
     .getRawMany();
 
+    
     MarkSum.sort(function(a, b) {
         return b.sum - a.sum;
       }); 
