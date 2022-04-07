@@ -52,6 +52,7 @@ export class TotalService {
              
            
         })
+        .where("addcourse = :id", { id: totalDto.addcourseId })
         .execute();
         return q;
     }

@@ -44,6 +44,7 @@ let TotalService = class TotalService {
                 addcourse: { id: totalDto.addcourseId },
                 total: totalDto.total
             })
+                .where("addcourse = :id", { id: totalDto.addcourseId })
                 .execute();
             return q;
         }
