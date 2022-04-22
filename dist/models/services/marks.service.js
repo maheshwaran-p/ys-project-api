@@ -24,7 +24,7 @@ let MarksService = class MarksService {
         this.connection = connection;
     }
     async percentage(studentId) {
-        const query = this.marksRespository.createQueryBuilder('marks').
+        const query = await this.marksRespository.createQueryBuilder('marks').
             leftJoin('marks.addcourse', 'addcourse').addSelect(['addcourse.title', 'addcourse.description', 'addcourse.total']);
         query.where('marks.studentId = :studentId', {
             studentId: studentId,
