@@ -18,7 +18,7 @@ let Marks = class Marks extends base_entity_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Marks.prototype, "mark", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => student_entity_1.Student, student => student.id, { onDelete: 'CASCADE' }),

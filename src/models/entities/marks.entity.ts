@@ -8,7 +8,7 @@ import { Student } from "./student.entity";
 export class Marks extends BaseEntity{
 
     @Column()
-    mark:number
+    mark:string
     
     @ManyToOne(() => Student, student => student.id,{ onDelete: 'CASCADE' })
     student:Student

@@ -1,6 +1,6 @@
 export declare class StudentMark {
     studentId: number;
-    mark: number;
+    mark: string;
 }
 export declare class MarkDTO {
     addcourseId: number;
