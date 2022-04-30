@@ -14,7 +14,7 @@ export class AddCourse extends BaseEntity {
     stafflink:string
 
     @Column({nullable:true})
-    total :number
+    total :string
    
 
 }

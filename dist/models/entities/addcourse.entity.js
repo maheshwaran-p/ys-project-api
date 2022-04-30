@@ -32,7 +32,7 @@ __decorate([
 ], AddCourse.prototype, "stafflink", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], AddCourse.prototype, "total", void 0);
 AddCourse = __decorate([
     (0, typeorm_1.Entity)()

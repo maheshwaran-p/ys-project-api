@@ -19,7 +19,7 @@ export class AddCourseService {
 
 
 
-    async updateTotal(id:number,total : number):Promise<any>{
+    async updateTotal(id:number,total : string):Promise<any>{
 
       return  await getConnection()
         .createQueryBuilder()
