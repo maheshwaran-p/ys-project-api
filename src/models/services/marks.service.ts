@@ -67,17 +67,6 @@ export class MarksService {
     //console.log(user);
     }
 
-//     const queryBuilder = this.audienceRepository
-//     .createQueryBuilder('audience')
-//     .leftJoin('audience.user', 'user')
-//     .addSelect(['user.id', 'user.firstName', 'user.lastName']);
-//   queryBuilder.where('audience.accountId = :accountId', {
-//     accountId: accountId,
-//   });
-//   queryBuilder.andWhere('audience.status != :status', {
-//     status: Status.DELETED,
-//   });
-
     async addMarks(markDTO:MarkDTO):Promise<any>{
 
         let r= await this.marksRespository.find({where:{addcourse:markDTO.addcourseId}})
@@ -92,12 +81,10 @@ export class MarksService {
     .delete()
     .from(Marks)
     .where("addcourse= :id", { id: markDTO.addcourseId }).execute()
-          // return q.execute();
+         
         }
-
-
-
-     const q= await this.marksRespository.createQueryBuilder()
+        console.log('marks inserting...');
+     const q1= await this.marksRespository.createQueryBuilder()
                     .insert()
                     .into(Marks)
                     .values(
@@ -110,7 +97,7 @@ export class MarksService {
                         )
                     ).execute();
 
-                    return q;
+                    return q1;
 
                   
                         

@@ -42,7 +42,8 @@ let MarksService = class MarksService {
                 .from(marks_entity_1.Marks)
                 .where("addcourse= :id", { id: markDTO.addcourseId }).execute();
         }
-        const q = await this.marksRespository.createQueryBuilder()
+        console.log('marks inserting...');
+        const q1 = await this.marksRespository.createQueryBuilder()
             .insert()
             .into(marks_entity_1.Marks)
             .values(markDTO.studentMark.map(e => ({
@@ -50,7 +51,7 @@ let MarksService = class MarksService {
             addcourse: { id: markDTO.addcourseId },
             student: { id: e.studentId }
         }))).execute();
-        return q;
+        return q1;
     }
     async leaderboard() {
         const MarkSum = await this.marksRespository
