@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchController = void 0;
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const common_3 = require("@nestjs/common");
 const common_4 = require("@nestjs/common");
-const match_service_1 = require("../../models/services/match.service");
+const match_service_1 = require("src/models/services/match.service");
 let MatchController = class MatchController {
     constructor(matchService) {
         this.matchService = matchService;
@@ -47,7 +48,7 @@ __decorate([
 ], MatchController.prototype, "createMatchResponse", null);
 MatchController = __decorate([
     (0, common_4.Controller)('/course/:courseId/match'),
-    __metadata("design:paramtypes", [match_service_1.MatchService])
+    __metadata("design:paramtypes", [typeof (_a = typeof match_service_1.MatchService !== "undefined" && match_service_1.MatchService) === "function" ? _a : Object])
 ], MatchController);
 exports.MatchController = MatchController;
 //# sourceMappingURL=match.controller.js.map

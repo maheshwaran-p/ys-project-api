@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchResponse = void 0;
 const typeorm_1 = require("typeorm");
@@ -26,11 +27,11 @@ __decorate([
 ], MatchResponse.prototype, "student", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => match_question_entity_1.MatchQuestion, { onDelete: 'CASCADE' }),
-    __metadata("design:type", match_question_entity_1.MatchQuestion)
+    __metadata("design:type", typeof (_a = typeof match_question_entity_1.MatchQuestion !== "undefined" && match_question_entity_1.MatchQuestion) === "function" ? _a : Object)
 ], MatchResponse.prototype, "question", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => match_answer_entity_1.MatchAnswer, { onDelete: 'CASCADE' }),
-    __metadata("design:type", match_answer_entity_1.MatchAnswer)
+    __metadata("design:type", typeof (_b = typeof match_answer_entity_1.MatchAnswer !== "undefined" && match_answer_entity_1.MatchAnswer) === "function" ? _b : Object)
 ], MatchResponse.prototype, "answer", void 0);
 __decorate([
     (0, typeorm_1.Column)({ default: false }),

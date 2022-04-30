@@ -4,8 +4,8 @@ import { MulitpleChoiceService } from 'src/models/services/mulitplechoice.servic
 export declare class MultipleChoiceController {
     private multipleChoiceService;
     constructor(multipleChoiceService: MulitpleChoiceService);
-    getMultipleChoice(req: any, courseId: number): Promise<import("../../models/entities/multiple-choice.entity").MultipleChoice[]>;
-    createMultipleChoice(multipleChoiceDTO: MultipleChoiceDTO[], courseId: number): Promise<import("typeorm").InsertResult>;
-    getMultipleChoiceResponse(req: any, courseId: number): Promise<any>;
-    createMultipleChoiceResponse(req: any, multipleChoiceResponseDTO: MultipleChoiceResponseDTO[]): Promise<any>;
+    getMultipleChoice(req: any, courseId: number): any;
+    createMultipleChoice(multipleChoiceDTO: MultipleChoiceDTO[], courseId: number): any;
+    getMultipleChoiceResponse(req: any, courseId: number): any;
+    createMultipleChoiceResponse(req: any, multipleChoiceResponseDTO: MultipleChoiceResponseDTO[]): any;
 }

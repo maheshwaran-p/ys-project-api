@@ -3,5 +3,5 @@ import { VideoService } from 'src/models/services/video.service';
 export declare class VideoController {
     private videoService;
     constructor(videoService: VideoService);
-    videoquestion(videoQuestionDto: VideoQuestionDTO): Promise<any>;
+    videoquestion(videoQuestionDto: VideoQuestionDTO): any;
 }

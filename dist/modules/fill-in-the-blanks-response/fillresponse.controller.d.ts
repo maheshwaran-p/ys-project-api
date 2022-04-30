@@ -3,10 +3,5 @@ import { FillResponseService } from 'src/models/services/fillintheblanksresponse
 export declare class FillresponseController {
     private fillResponseService;
     constructor(fillResponseService: FillResponseService);
-    fillresponse(fillResponseDTO: FillResponseDTO): Promise<{
-        questionId: number;
-        studentId: number;
-        answer: string;
-        isCorrect: boolean;
-    } & import("../../models/entities/fill.entity").FillResponse>;
+    fillresponse(fillResponseDTO: FillResponseDTO): any;
 }

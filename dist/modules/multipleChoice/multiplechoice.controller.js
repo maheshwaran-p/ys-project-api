@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MultipleChoiceController = void 0;
 const common_1 = require("@nestjs/common");
@@ -19,7 +20,7 @@ const common_3 = require("@nestjs/common");
 const common_4 = require("@nestjs/common");
 const common_5 = require("@nestjs/common");
 const common_6 = require("@nestjs/common");
-const mulitplechoice_service_1 = require("../../models/services/mulitplechoice.service");
+const mulitplechoice_service_1 = require("src/models/services/mulitplechoice.service");
 const jwt_guard_1 = require("../auth/jwt.guard");
 let MultipleChoiceController = class MultipleChoiceController {
     constructor(multipleChoiceService) {
@@ -77,7 +78,7 @@ __decorate([
 ], MultipleChoiceController.prototype, "createMultipleChoiceResponse", null);
 MultipleChoiceController = __decorate([
     (0, common_6.Controller)('/course/:courseId/mcq'),
-    __metadata("design:paramtypes", [mulitplechoice_service_1.MulitpleChoiceService])
+    __metadata("design:paramtypes", [typeof (_a = typeof mulitplechoice_service_1.MulitpleChoiceService !== "undefined" && mulitplechoice_service_1.MulitpleChoiceService) === "function" ? _a : Object])
 ], MultipleChoiceController);
 exports.MultipleChoiceController = MultipleChoiceController;
 //# sourceMappingURL=multiplechoice.controller.js.map

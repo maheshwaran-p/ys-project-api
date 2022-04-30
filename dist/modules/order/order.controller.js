@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderController = void 0;
 const common_1 = require("@nestjs/common");
 const order_dto_1 = require("../../models/dto/order.dto");
-const order_service_1 = require("../../models/services/order.service");
+const order_service_1 = require("src/models/services/order.service");
 let OrderController = class OrderController {
     constructor(orderService) {
         this.orderService = orderService;
@@ -32,7 +33,7 @@ __decorate([
 ], OrderController.prototype, "orderQuestion", null);
 OrderController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [order_service_1.OrderService])
+    __metadata("design:paramtypes", [typeof (_a = typeof order_service_1.OrderService !== "undefined" && order_service_1.OrderService) === "function" ? _a : Object])
 ], OrderController);
 exports.OrderController = OrderController;
 //# sourceMappingURL=order.controller.js.map

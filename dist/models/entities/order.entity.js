@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderResponse = exports.Order = void 0;
 const typeorm_1 = require("typeorm");
@@ -37,7 +38,7 @@ let OrderResponse = class OrderResponse extends base_entity_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.ManyToOne)(() => video_entity_1.Video, video => video.id),
-    __metadata("design:type", video_entity_1.Video)
+    __metadata("design:type", typeof (_a = typeof video_entity_1.Video !== "undefined" && video_entity_1.Video) === "function" ? _a : Object)
 ], OrderResponse.prototype, "question", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => student_entity_1.Student, student => student.id),

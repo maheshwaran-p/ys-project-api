@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FillController = void 0;
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const common_3 = require("@nestjs/common");
 const fillintheblanks_dto_1 = require("../../models/dto/fillintheblanks.dto");
-const fillintheblanks_service_1 = require("../../models/services/fillintheblanks.service");
+const fillintheblanks_service_1 = require("src/models/services/fillintheblanks.service");
 let FillController = class FillController {
     constructor(fillquestinService) {
         this.fillquestinService = fillquestinService;
@@ -44,7 +45,7 @@ __decorate([
 ], FillController.prototype, "fillquestion", null);
 FillController = __decorate([
     (0, common_3.Controller)('/course/:courseId/fill'),
-    __metadata("design:paramtypes", [fillintheblanks_service_1.FillintheblanksService])
+    __metadata("design:paramtypes", [typeof (_a = typeof fillintheblanks_service_1.FillintheblanksService !== "undefined" && fillintheblanks_service_1.FillintheblanksService) === "function" ? _a : Object])
 ], FillController);
 exports.FillController = FillController;
 //# sourceMappingURL=fill.controller.js.map
