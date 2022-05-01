@@ -14,15 +14,15 @@ export class StudentController {
     ) { }
 
     @Get('/get')
-    getCourse(){
+   async getCourse(){
 
         //console.log(params.id);
-        return this.studentService.getStudents();
+        return await this.studentService.getStudents();
     }
 
     @Post()
-    createStudent(@Body() createStudentDTO: CreateStudentDTO): Promise<Student> {
-        return this.studentService.createStudent(createStudentDTO);
+   async createStudent(@Body() createStudentDTO: CreateStudentDTO): Promise<Student> {
+        return await this.studentService.createStudent(createStudentDTO);
 
     }
 
@@ -37,7 +37,7 @@ export class StudentController {
     @Post('/reset')
   async  resetpassword(@Body() resetDTO:ResetDTO):Promise<any>{
 
-    return this.studentService.resetpassword(resetDTO);
+    return await this.studentService.resetpassword(resetDTO);
 
 
 

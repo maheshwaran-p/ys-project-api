@@ -26,11 +26,11 @@ let MarksController = class MarksController {
     async addMarks(markDTO) {
         return await this.marksService.addMarks(markDTO);
     }
-    getCourseMarks(params) {
-        return this.marksService.getCourseMarks(params.id);
+    async getCourseMarks(params) {
+        return await this.marksService.getCourseMarks(params.id);
     }
-    leaderboard() {
-        return this.marksService.leaderboard();
+    async leaderboard() {
+        return await this.marksService.leaderboard();
     }
 };
 __decorate([
@@ -52,13 +52,13 @@ __decorate([
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], MarksController.prototype, "getCourseMarks", null);
 __decorate([
     (0, common_1.Get)('/leader'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], MarksController.prototype, "leaderboard", null);
 MarksController = __decorate([
     (0, common_1.Controller)('/marks'),

@@ -8,8 +8,8 @@ export class StaffController {
   constructor(private staffService: StaffService) { }
 
   @Post()
-  createStaff(@Body() createStaffDTO: CreateStaffDTO): Promise<Staff> {
-    return this.staffService.createStaff(createStaffDTO);
+ async createStaff(@Body() createStaffDTO: CreateStaffDTO): Promise<Staff> {
+    return await this.staffService.createStaff(createStaffDTO);
   }
 
 

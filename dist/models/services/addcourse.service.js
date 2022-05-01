@@ -45,6 +45,9 @@ let AddCourseService = class AddCourseService {
     async createCourse(title, description, course, stafflink) {
         return await this.addCourseRespository.save({ title: title, description: description, course: course, stafflink: stafflink });
     }
+    async getTotal(id) {
+        return await this.addCourseRespository.findOne(id);
+    }
 };
 AddCourseService = __decorate([
     (0, common_1.Injectable)(),

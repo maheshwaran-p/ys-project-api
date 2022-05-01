@@ -8,5 +8,6 @@ export declare class AddcourseController {
     addCourse(addCourseDTO: AddCourseDTO): Promise<any>;
     deleteCourse(params: any): Promise<any>;
     getCourse(params: any): Promise<any>;
+    getTotal(params: any): Promise<import("../../models/entities/addcourse.entity").AddCourse>;
     updateTotal(params: any, addCourseDTO: AddCourseDTO): Promise<any>;
 }

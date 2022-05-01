@@ -64,5 +64,11 @@ export class AddCourseService {
 
     }
 
+    async getTotal(id){
+
+      return await this.addCourseRespository.findOne(id);
+
+    }
+
 
 }

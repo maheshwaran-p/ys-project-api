@@ -10,9 +10,9 @@ export class CourseController {
         private courseService: CourseService
     ) { }
     @Put()
-    createCourse(@Param('staffId') staffId: number, @Body('courseName') courseName: string): Promise<Course> {
+   async createCourse(@Param('staffId') staffId: number, @Body('courseName') courseName: string): Promise<Course> {
         console.log(staffId);
-        return this.courseService.createCourse(staffId, courseName);
+        return await this.courseService.createCourse(staffId, courseName);
     }
 
 }

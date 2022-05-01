@@ -22,25 +22,25 @@ let StudentController = class StudentController {
     constructor(studentService) {
         this.studentService = studentService;
     }
-    getCourse() {
-        return this.studentService.getStudents();
+    async getCourse() {
+        return await this.studentService.getStudents();
     }
-    createStudent(createStudentDTO) {
-        return this.studentService.createStudent(createStudentDTO);
+    async createStudent(createStudentDTO) {
+        return await this.studentService.createStudent(createStudentDTO);
     }
     async getStudent(params) {
         console.log(params.username);
         return await this.studentService.findStudentByUserName(params.username);
     }
     async resetpassword(resetDTO) {
-        return this.studentService.resetpassword(resetDTO);
+        return await this.studentService.resetpassword(resetDTO);
     }
 };
 __decorate([
     (0, common_1.Get)('/get'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], StudentController.prototype, "getCourse", null);
 __decorate([
     (0, common_1.Post)(),

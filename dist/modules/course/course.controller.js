@@ -21,9 +21,9 @@ let CourseController = class CourseController {
     constructor(courseService) {
         this.courseService = courseService;
     }
-    createCourse(staffId, courseName) {
+    async createCourse(staffId, courseName) {
         console.log(staffId);
-        return this.courseService.createCourse(staffId, courseName);
+        return await this.courseService.createCourse(staffId, courseName);
     }
 };
 __decorate([

@@ -16,12 +16,12 @@ export class AddcourseController {
 
 
     @Get('/response')
-    getcourses(
+  async  getcourses(
         addCourseDTO:AddCourseDTO
       
     ) {
        
-        return this.addCourseService.getAllCourses();
+        return await this.addCourseService.getAllCourses();
     }
 
     
@@ -42,26 +42,30 @@ findOne(@Param() params) {
    
 
     @Get('delete/:id')
-    deleteCourse(@Param() params){
+  async  deleteCourse(@Param() params){
 
         console.log(params.id);
-        return this.addCourseService.deleteOneCourse(params.id);
+        return await this.addCourseService.deleteOneCourse(params.id);
     }
 
     @Get('validate/:id')
-    getCourse(@Param() params){
+  async  getCourse(@Param() params){
 
         console.log(params.id);
-        return this.addCourseService.getCourse(params.id);
+        return await this.addCourseService.getCourse(params.id);
     }
 
+@Get('total/get/:id')
+async getTotal(@Param() params ){
 
+    return await this.addCourseService.getTotal(params.id);
+}
 
     @Post('/total/:id')
-    updateTotal(@Param() params , @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
+  async  updateTotal(@Param() params , @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
 
         // console.log(params.id);
-        return this.addCourseService.updateTotal(params.id,addCourseDTO.total);
+        return await this.addCourseService.updateTotal(params.id,addCourseDTO.total);
 
     }
 

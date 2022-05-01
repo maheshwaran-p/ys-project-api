@@ -19,12 +19,12 @@ export class AddnotesController {
 
 
     @Get('/response')
-    getcourses(
+   async getcourses(
         addNotesDTO:AddNotesDTO
       
     ) {
        
-        return this.addnotesService.getNotes();
+        return await this.addnotesService.getNotes();
     }
 
     @Post()

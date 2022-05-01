@@ -20,8 +20,8 @@ let AddnotesController = class AddnotesController {
     constructor(addnotesService) {
         this.addnotesService = addnotesService;
     }
-    getcourses(addNotesDTO) {
-        return this.addnotesService.getNotes();
+    async getcourses(addNotesDTO) {
+        return await this.addnotesService.getNotes();
     }
     async createNotes(addNotesDTO) {
         return await this.addnotesService.createNotes(addNotesDTO.title, addNotesDTO.description, addNotesDTO.link);
@@ -31,7 +31,7 @@ __decorate([
     (0, common_1.Get)('/response'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [addnotes_dto_1.AddNotesDTO]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AddnotesController.prototype, "getcourses", null);
 __decorate([
     (0, common_1.Post)(),

@@ -20,8 +20,8 @@ let StaffController = class StaffController {
     constructor(staffService) {
         this.staffService = staffService;
     }
-    createStaff(createStaffDTO) {
-        return this.staffService.createStaff(createStaffDTO);
+    async createStaff(createStaffDTO) {
+        return await this.staffService.createStaff(createStaffDTO);
     }
 };
 __decorate([

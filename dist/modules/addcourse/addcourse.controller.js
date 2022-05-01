@@ -20,8 +20,8 @@ let AddcourseController = class AddcourseController {
     constructor(addCourseService) {
         this.addCourseService = addCourseService;
     }
-    getcourses(addCourseDTO) {
-        return this.addCourseService.getAllCourses();
+    async getcourses(addCourseDTO) {
+        return await this.addCourseService.getAllCourses();
     }
     findOne(params) {
         console.log(params.id);
@@ -30,23 +30,26 @@ let AddcourseController = class AddcourseController {
     async addCourse(addCourseDTO) {
         return await this.addCourseService.createCourse(addCourseDTO.title, addCourseDTO.description, addCourseDTO.course, addCourseDTO.stafflink);
     }
-    deleteCourse(params) {
+    async deleteCourse(params) {
         console.log(params.id);
-        return this.addCourseService.deleteOneCourse(params.id);
+        return await this.addCourseService.deleteOneCourse(params.id);
     }
-    getCourse(params) {
+    async getCourse(params) {
         console.log(params.id);
-        return this.addCourseService.getCourse(params.id);
+        return await this.addCourseService.getCourse(params.id);
     }
-    updateTotal(params, addCourseDTO) {
-        return this.addCourseService.updateTotal(params.id, addCourseDTO.total);
+    async getTotal(params) {
+        return await this.addCourseService.getTotal(params.id);
+    }
+    async updateTotal(params, addCourseDTO) {
+        return await this.addCourseService.updateTotal(params.id, addCourseDTO.total);
     }
 };
 __decorate([
     (0, common_1.Get)('/response'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [addcourse_dto_1.AddCourseDTO]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AddcourseController.prototype, "getcourses", null);
 __decorate([
     (0, common_1.Get)(':id'),
@@ -67,15 +70,22 @@ __decorate([
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AddcourseController.prototype, "deleteCourse", null);
 __decorate([
     (0, common_1.Get)('validate/:id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AddcourseController.prototype, "getCourse", null);
+__decorate([
+    (0, common_1.Get)('total/get/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AddcourseController.prototype, "getTotal", null);
 __decorate([
     (0, common_1.Post)('/total/:id'),
     __param(0, (0, common_1.Param)()),

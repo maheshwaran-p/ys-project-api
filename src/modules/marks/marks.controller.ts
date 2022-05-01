@@ -35,17 +35,17 @@ export class MarksController {
 
 
     @Get('/get/:id')
-    getCourseMarks(@Param() params){
+  async  getCourseMarks(@Param() params){
 
-        return this.marksService.getCourseMarks(params.id);
+        return await this.marksService.getCourseMarks(params.id);
 
     }
 
 
     @Get('/leader')
-    leaderboard(){
+   async  leaderboard(){
 
-        return this.marksService.leaderboard();
+        return await this.marksService.leaderboard();
 
     }
 
