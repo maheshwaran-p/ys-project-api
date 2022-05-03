@@ -12,7 +12,7 @@ export class Marks extends BaseEntity{
     
     @ManyToOne(() => Student, student => student.id,{ onDelete: 'CASCADE' })
     student:Student
-    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id,)
+    @ManyToOne(()=>AddCourse, addcourse=>addcourse.id,{ onDelete: 'CASCADE' })
     addcourse:AddCourse
 
 

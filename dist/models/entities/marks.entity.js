@@ -25,7 +25,7 @@ __decorate([
     __metadata("design:type", student_entity_1.Student)
 ], Marks.prototype, "student", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => addcourse_entity_1.AddCourse, addcourse => addcourse.id),
+    (0, typeorm_1.ManyToOne)(() => addcourse_entity_1.AddCourse, addcourse => addcourse.id, { onDelete: 'CASCADE' }),
     __metadata("design:type", addcourse_entity_1.AddCourse)
 ], Marks.prototype, "addcourse", void 0);
 Marks = __decorate([

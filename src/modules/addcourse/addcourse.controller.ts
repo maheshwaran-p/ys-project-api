@@ -41,7 +41,7 @@ findOne(@Param() params) {
 
    
 
-    @Get('delete/:id')
+@Get('delete/:id')
   async  deleteCourse(@Param() params){
 
         console.log(params.id);
