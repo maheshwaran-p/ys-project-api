@@ -30,6 +30,12 @@ let AddcourseController = class AddcourseController {
     async addCourse(addCourseDTO) {
         return await this.addCourseService.createCourse(addCourseDTO.title, addCourseDTO.description, addCourseDTO.course, addCourseDTO.stafflink);
     }
+    async editCourse(params, addCourseDTO) {
+        return await this.addCourseService.editCourse(addCourseDTO.title, addCourseDTO.description, addCourseDTO.course, addCourseDTO.stafflink, params.id);
+    }
+    async findinEdit(params) {
+        return await this.addCourseService.findinEdit(params.id);
+    }
     async deleteCourse(params) {
         console.log(params.id);
         return await this.addCourseService.deleteOneCourse(params.id);
@@ -65,6 +71,21 @@ __decorate([
     __metadata("design:paramtypes", [addcourse_dto_1.AddCourseDTO]),
     __metadata("design:returntype", Promise)
 ], AddcourseController.prototype, "addCourse", null);
+__decorate([
+    (0, common_1.Post)('edit/:id'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, addcourse_dto_1.AddCourseDTO]),
+    __metadata("design:returntype", Promise)
+], AddcourseController.prototype, "editCourse", null);
+__decorate([
+    (0, common_1.Get)('edit/get/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AddcourseController.prototype, "findinEdit", null);
 __decorate([
     (0, common_1.Get)('delete/:id'),
     __param(0, (0, common_1.Param)()),

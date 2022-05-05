@@ -9,5 +9,7 @@ export declare class AddCourseService {
     getCourse(courseId: number): Promise<any>;
     getAllCourses(): Promise<any>;
     createCourse(title: string, description: string, course: string, stafflink: string): Promise<any>;
+    editCourse(title: string, description: string, course: string, stafflink: string, eid: any): Promise<any>;
+    findinEdit(id: any): Promise<AddCourse>;
     getTotal(id: any): Promise<AddCourse>;
 }

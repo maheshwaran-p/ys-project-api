@@ -38,6 +38,17 @@ findOne(@Param() params) {
 
     }
 
+    @Post('edit/:id')
+    async editCourse(@Param() params, @Body() addCourseDTO:AddCourseDTO ):Promise<any>{
+        return await this.addCourseService.editCourse(addCourseDTO.title,addCourseDTO.description,addCourseDTO.course,addCourseDTO.stafflink,params.id);
+
+    }
+
+    @Get('edit/get/:id')
+async findinEdit(@Param() params ){
+
+    return await this.addCourseService.findinEdit(params.id);
+}
 
    
 

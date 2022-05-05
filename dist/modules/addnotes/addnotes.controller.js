@@ -20,6 +20,10 @@ let AddnotesController = class AddnotesController {
     constructor(addnotesService) {
         this.addnotesService = addnotesService;
     }
+    async deleteNote(params) {
+        console.log(params.id);
+        return await this.addnotesService.deleteOneNote(params.id);
+    }
     async getcourses(addNotesDTO) {
         return await this.addnotesService.getNotes();
     }
@@ -27,6 +31,13 @@ let AddnotesController = class AddnotesController {
         return await this.addnotesService.createNotes(addNotesDTO.title, addNotesDTO.description, addNotesDTO.link);
     }
 };
+__decorate([
+    (0, common_1.Get)('delete/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AddnotesController.prototype, "deleteNote", null);
 __decorate([
     (0, common_1.Get)('/response'),
     __metadata("design:type", Function),

@@ -45,6 +45,21 @@ let AddCourseService = class AddCourseService {
     async createCourse(title, description, course, stafflink) {
         return await this.addCourseRespository.save({ title: title, description: description, course: course, stafflink: stafflink });
     }
+    async editCourse(title, description, course, stafflink, eid) {
+        const r = await this.addCourseRespository.findOne(eid);
+        console.log(r);
+        r.title = title;
+        r.description = description;
+        r.course = course;
+        r.stafflink = stafflink;
+        console.log('after edit');
+        console.log(r);
+        return await this.addCourseRespository.save(r);
+    }
+    async findinEdit(id) {
+        console.log(await this.addCourseRespository.findOne(id));
+        return await this.addCourseRespository.findOne(id);
+    }
     async getTotal(id) {
         return await this.addCourseRespository.findOne(id);
     }

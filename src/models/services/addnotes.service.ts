@@ -18,7 +18,9 @@ export class AddnotesService {
        
     ) { }
 
-
+async deleteOneNote(noteId:any):Promise<any>{
+    return await this.addNotesRespository.delete(noteId);
+}
     async getNotes() : Promise<any>{
 
         return await this.addNotesRespository.find();

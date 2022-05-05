@@ -21,6 +21,9 @@ let AddnotesService = class AddnotesService {
     constructor(addNotesRespository) {
         this.addNotesRespository = addNotesRespository;
     }
+    async deleteOneNote(noteId) {
+        return await this.addNotesRespository.delete(noteId);
+    }
     async getNotes() {
         return await this.addNotesRespository.find();
     }
