@@ -25,4 +25,7 @@ export declare class Report {
     type: string;
     userType: string;
     userId: string;
+    userName: string;
+    approver1: string;
+    approver2: string;
 }

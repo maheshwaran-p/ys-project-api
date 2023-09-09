@@ -22,11 +22,13 @@ export declare class UserService {
         data: Report[];
         user_id: number;
         user_type: string;
+        user_name: string;
     } | {
         msg: number;
         data?: undefined;
         user_id?: undefined;
         user_type?: undefined;
+        user_name?: undefined;
     }>;
     report(reportDTO: ReportDTO): Promise<any>;
 }

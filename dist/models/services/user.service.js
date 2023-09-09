@@ -42,7 +42,24 @@ let UserService = class UserService {
         }
     }
     async getAllForms(formDto) {
-        return await this.reportRepository.find({ status: formDto.status, type: formDto.type });
+        let forms;
+        if (formDto.returnType == 'filtered') {
+            forms = await this.reportRepository.find({ status: formDto.status, type: formDto.type });
+        }
+        else if (formDto.returnType == 'mine') {
+            console.log(formDto);
+            forms = await this.reportRepository.find({ userId: formDto.userId, status: formDto.status });
+        }
+        else if (formDto.returnType == 'all') {
+            forms = await this.reportRepository.find({ status: formDto.status });
+        }
+        else {
+            forms = await this.reportRepository.find({ userId: formDto.userId, status: formDto.status });
+        }
+        return {
+            msg: '1',
+            data: forms
+        };
     }
     async resetPassword(email, username, password) {
         let reset = await this.userRepository.findOne({ email: email });
@@ -80,7 +97,8 @@ let UserService = class UserService {
                 'msg': 1,
                 data: reports,
                 user_id: user.id,
-                user_type: user.userType
+                user_type: user.userType,
+                user_name: user.firstname
             };
         }
         else {
@@ -109,7 +127,8 @@ let UserService = class UserService {
                 'msg': 1,
                 data: reports,
                 user_id: user.id,
-                user_type: user.userType
+                user_type: user.userType,
+                user_name: user.firstname
             };
         }
         else {
@@ -118,8 +137,9 @@ let UserService = class UserService {
     }
     async report(reportDTO) {
         await this.reportRepository.save(reportDTO);
+        const forms = await this.reportRepository.find({ status: 'submitted', userId: reportDTO.userId });
         console.log(1);
-        return { msg: 1 };
+        return { msg: 1, data: forms };
     }
 };
 UserService = __decorate([

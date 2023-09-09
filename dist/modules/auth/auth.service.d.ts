@@ -20,11 +20,13 @@ export declare class AuthService {
         data: import("../../models/entities/report.entity").Report[];
         user_id: number;
         user_type: string;
+        user_name: string;
     } | {
         msg: number;
         data?: undefined;
         user_id?: undefined;
         user_type?: undefined;
+        user_name?: undefined;
     }>;
     getAllForm(formDto: FormDto): Promise<any>;
     saveReport(reportDTO: ReportDTO): Promise<any>;

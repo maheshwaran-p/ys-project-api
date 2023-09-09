@@ -53,6 +53,8 @@ export class AuthController {
         console.log(ctx)
         return ctx;
     }
+
+
     @UseGuards(JwtGaurd)
     @Post('user')
     checkUser(@Request() req: any) {

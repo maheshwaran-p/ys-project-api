@@ -53,7 +53,7 @@ export class User {
 
 
   @Column({
-    name: 'trait_type',
+    name: 'user_type',
     type: 'enum',
     enum: UserType,
     default: UserType.BENEFICIARY
@@ -66,6 +66,7 @@ export class User {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
+
 
   @Column({
     name: 'updated_at',

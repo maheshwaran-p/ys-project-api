@@ -74,7 +74,7 @@ __decorate([
 ], User.prototype, "salutation", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        name: 'trait_type',
+        name: 'user_type',
         type: 'enum',
         enum: UserType,
         default: UserType.BENEFICIARY

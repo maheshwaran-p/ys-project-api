@@ -76,15 +76,21 @@ export class Report {
     type: string;
 
     @Column({
-        name: 'trait_type',
-        type: 'enum',
-        enum: UserType,
-        default: UserType.BENEFICIARY
+        nullable: true,
     })
     userType: string;
 
     @Column({ nullable: true })
     userId: string;
+
+    @Column({ nullable: true })
+    userName: string;
+
+    @Column({ nullable: true })
+    approver1: string;
+
+    @Column({ nullable: true })
+    approver2: string;
 
 
 }

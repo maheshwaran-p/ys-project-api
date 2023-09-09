@@ -14,11 +14,13 @@ export declare class AuthController {
         data: import("../../models/entities/report.entity").Report[];
         user_id: number;
         user_type: string;
+        user_name: string;
     } | {
         msg: number;
         data?: undefined;
         user_id?: undefined;
         user_type?: undefined;
+        user_name?: undefined;
     }>;
     report(reportDTO: ReportDTO): Promise<any>;
     getAllForms(formDto: FormDto): Promise<any>;

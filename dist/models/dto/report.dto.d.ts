@@ -24,4 +24,5 @@ export declare class ReportDTO {
     type: any;
     userType: any;
     userId: any;
+    userName: any;
 }

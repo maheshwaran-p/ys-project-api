@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Report = void 0;
 const typeorm_1 = require("typeorm");
-const user_entity_1 = require("./user.entity");
 let Report = class Report {
 };
 __decorate([
@@ -112,10 +111,7 @@ __decorate([
 ], Report.prototype, "type", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        name: 'trait_type',
-        type: 'enum',
-        enum: user_entity_1.UserType,
-        default: user_entity_1.UserType.BENEFICIARY
+        nullable: true,
     }),
     __metadata("design:type", String)
 ], Report.prototype, "userType", void 0);
@@ -123,6 +119,18 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Report.prototype, "userId", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Report.prototype, "userName", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Report.prototype, "approver1", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Report.prototype, "approver2", void 0);
 Report = __decorate([
     (0, typeorm_1.Entity)()
 ], Report);
