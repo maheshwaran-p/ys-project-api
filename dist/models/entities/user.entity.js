@@ -9,8 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.User = exports.UserType = void 0;
 const typeorm_1 = require("typeorm");
+var UserType;
+(function (UserType) {
+    UserType["HQ_STAFF"] = "HQ_STAFF";
+    UserType["PROJECT_STAFF"] = "PROJECT_STAFF";
+    UserType["BENEFICIARY"] = "BENEFICIARY";
+})(UserType = exports.UserType || (exports.UserType = {}));
 let User = class User {
 };
 __decorate([
@@ -18,9 +24,13 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'username' }),
+    (0, typeorm_1.Column)({ name: 'firstname' }),
     __metadata("design:type", String)
-], User.prototype, "username", void 0);
+], User.prototype, "firstname", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'surname' }),
+    __metadata("design:type", String)
+], User.prototype, "surname", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -33,6 +43,44 @@ __decorate([
     (0, typeorm_1.Column)({ default: false }),
     __metadata("design:type", Boolean)
 ], User.prototype, "isStaff", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'mobile_number' }),
+    __metadata("design:type", String)
+], User.prototype, "mobileNumber", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: false }),
+    (0, typeorm_1.Column)({ name: 'door_number' }),
+    __metadata("design:type", String)
+], User.prototype, "doorNumber", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "country", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "state", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "district", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "block", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "salutation", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        name: 'trait_type',
+        type: 'enum',
+        enum: UserType,
+        default: UserType.BENEFICIARY
+    }),
+    __metadata("design:type", String)
+], User.prototype, "userType", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         name: 'created_at',

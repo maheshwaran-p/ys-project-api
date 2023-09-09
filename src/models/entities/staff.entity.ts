@@ -3,20 +3,20 @@ import { Course } from "./course.entity";
 import { User } from "./user.entity";
 
 @Entity()
-export class Staff{
+export class Staff {
 
     @PrimaryGeneratedColumn()
-    id:number;
-   
+    id: number;
 
-    @OneToOne(()=>User,{onDelete:'CASCADE'})
+
+    @OneToOne(() => User, { onDelete: 'CASCADE' })
     @JoinColumn()
-    user:User;
+    user: User;
 
-    @OneToMany(()=> Course,course=>course.staff)
-    courses:Course[];
+    @OneToMany(() => Course, course => course.staff)
+    courses: Course[];
 
-    @ManyToMany(()=>Course,course=>course.allowedStaffs)
+    @ManyToMany(() => Course, course => course.allowedStaffs)
     @JoinTable()
-    allowedCourses:Course[];
+    allowedCourses: Course[];
 }

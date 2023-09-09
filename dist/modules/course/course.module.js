@@ -16,7 +16,7 @@ CourseModule = __decorate([
     (0, common_1.Module)({
         imports: [models_module_1.ModelsModule],
         controllers: [
-            course_controller_1.CourseController,
+            course_controller_1.CourseController
         ],
     })
 ], CourseModule);

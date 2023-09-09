@@ -14,6 +14,7 @@ import { MatchEntity } from './entities/match.entity';
 import { MultipleChoiceResponse } from './entities/multiple-choice-response.entity';
 import { MultipleChoice } from './entities/multiple-choice.entity';
 import { Order, OrderResponse } from './entities/order.entity';
+import { Report } from './entities/report.entity';
 import { Staff } from './entities/staff.entity';
 import { Student } from './entities/student.entity';
 import { Total } from './entities/total.entity';
@@ -69,7 +70,8 @@ import { VideoService } from './services/video.service';
       AddCourse,
       AddNotes,
       Marks,
-      Total
+      Total,
+      Report
     ]),
   ],
   providers: [

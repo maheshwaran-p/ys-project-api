@@ -5,7 +5,7 @@ import { ModelsModule } from 'src/models/models.module';
 @Module({
     imports: [ModelsModule],
     controllers: [
-        CourseController,],
+        CourseController],
 
 })
 export class CourseModule { }

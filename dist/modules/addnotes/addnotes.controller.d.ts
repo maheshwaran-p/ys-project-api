@@ -4,5 +4,6 @@ export declare class AddnotesController {
     private addnotesService;
     constructor(addnotesService: AddnotesService);
     getcourses(addNotesDTO: AddNotesDTO): Promise<any>;
+    location(): Promise<void>;
     createNotes(addNotesDTO: AddNotesDTO): Promise<any>;
 }

@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddnotesController = void 0;
 const common_1 = require("@nestjs/common");
+const express_1 = require("express");
 const addnotes_dto_1 = require("../../models/dto/addnotes.dto");
 const addnotes_service_1 = require("../../models/services/addnotes.service");
 let AddnotesController = class AddnotesController {
@@ -22,6 +23,9 @@ let AddnotesController = class AddnotesController {
     }
     getcourses(addNotesDTO) {
         return this.addnotesService.getNotes();
+    }
+    async location() {
+        await console.log(express_1.response.json);
     }
     async createNotes(addNotesDTO) {
         return await this.addnotesService.createNotes(addNotesDTO.title, addNotesDTO.description, addNotesDTO.link);
@@ -33,6 +37,12 @@ __decorate([
     __metadata("design:paramtypes", [addnotes_dto_1.AddNotesDTO]),
     __metadata("design:returntype", void 0)
 ], AddnotesController.prototype, "getcourses", null);
+__decorate([
+    (0, common_1.Get)('/test'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AddnotesController.prototype, "location", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

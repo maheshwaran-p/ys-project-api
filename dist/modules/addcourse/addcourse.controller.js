@@ -30,6 +30,9 @@ let AddcourseController = class AddcourseController {
     async addCourse(addCourseDTO) {
         return await this.addCourseService.createCourse(addCourseDTO.title, addCourseDTO.description, addCourseDTO.course, addCourseDTO.stafflink);
     }
+    async chumma() {
+        return await this.addCourseService.chumma();
+    }
     deleteCourse(params) {
         console.log(params.id);
         return this.addCourseService.deleteOneCourse(params.id);
@@ -62,6 +65,12 @@ __decorate([
     __metadata("design:paramtypes", [addcourse_dto_1.AddCourseDTO]),
     __metadata("design:returntype", Promise)
 ], AddcourseController.prototype, "addCourse", null);
+__decorate([
+    (0, common_1.Post)('/is'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AddcourseController.prototype, "chumma", null);
 __decorate([
     (0, common_1.Get)('delete/:id'),
     __param(0, (0, common_1.Param)()),

@@ -18,16 +18,41 @@ const common_2 = require("@nestjs/common");
 const common_3 = require("@nestjs/common");
 const common_4 = require("@nestjs/common");
 const common_5 = require("@nestjs/common");
+const form_dto_1 = require("../../models/dto/form.dto");
 const login_user_dto_1 = require("../../models/dto/login-user.dto");
+const report_dto_1 = require("../../models/dto/report.dto");
+const user_dto_1 = require("../../models/dto/user.dto");
 const auth_service_1 = require("./auth.service");
 const jwt_guard_1 = require("./jwt.guard");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
+    async pinEnity(req) {
+        console.log('called..');
+        return "success";
+    }
     login(loginUserDto) {
         const { username, password } = loginUserDto;
         const ctx = this.authService.login(username, password);
+        return ctx;
+    }
+    signUp(userDto) {
+        const ctx = this.authService.register(userDto);
+        return ctx;
+    }
+    signIN(signInUserDto) {
+        console.log('called');
+        const ctx = this.authService.signIn(signInUserDto);
+        return ctx;
+    }
+    report(reportDTO) {
+        const ctx = this.authService.saveReport(reportDTO);
+        return ctx;
+    }
+    async getAllForms(formDto) {
+        const ctx = await this.authService.getAllForm(formDto);
+        console.log(ctx);
         return ctx;
     }
     checkUser(req) {
@@ -35,12 +60,47 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
+    (0, common_1.Get)('/bot'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "pinEnity", null);
+__decorate([
     (0, common_3.Post)('login'),
     __param(0, (0, common_4.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_user_dto_1.LoginUserDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_3.Post)('sign-up'),
+    __param(0, (0, common_4.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_dto_1.UserDTO]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "signUp", null);
+__decorate([
+    (0, common_3.Post)('sign-in'),
+    __param(0, (0, common_4.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [login_user_dto_1.SignInUserDto]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "signIN", null);
+__decorate([
+    (0, common_3.Post)('report'),
+    __param(0, (0, common_4.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [report_dto_1.ReportDTO]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "report", null);
+__decorate([
+    (0, common_3.Post)('/forms'),
+    __param(0, (0, common_4.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [form_dto_1.FormDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getAllForms", null);
 __decorate([
     (0, common_2.UseGuards)(jwt_guard_1.JwtGaurd),
     (0, common_3.Post)('user'),

@@ -23,6 +23,7 @@ const match_entity_1 = require("./entities/match.entity");
 const multiple_choice_response_entity_1 = require("./entities/multiple-choice-response.entity");
 const multiple_choice_entity_1 = require("./entities/multiple-choice.entity");
 const order_entity_1 = require("./entities/order.entity");
+const report_entity_1 = require("./entities/report.entity");
 const staff_entity_1 = require("./entities/staff.entity");
 const student_entity_1 = require("./entities/student.entity");
 const total_entity_1 = require("./entities/total.entity");
@@ -80,7 +81,8 @@ ModelsModule = __decorate([
                 addcourse_entity_1.AddCourse,
                 addnotes_entity_1.AddNotes,
                 marks_entity_1.Marks,
-                total_entity_1.Total
+                total_entity_1.Total,
+                report_entity_1.Report
             ]),
         ],
         providers: [

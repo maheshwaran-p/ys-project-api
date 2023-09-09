@@ -6,6 +6,7 @@ export declare class AddcourseController {
     getcourses(addCourseDTO: AddCourseDTO): Promise<any>;
     findOne(params: any): Promise<any>;
     addCourse(addCourseDTO: AddCourseDTO): Promise<any>;
+    chumma(): Promise<any>;
     deleteCourse(params: any): Promise<any>;
     getCourse(params: any): Promise<any>;
     updateTotal(params: any, addCourseDTO: AddCourseDTO): Promise<any>;

@@ -9,7 +9,7 @@ import { ModelsModule } from 'src/models/models.module';
 @Module({
     imports: [ModelsModule],
     controllers: [
-        AddnotesController, ],
+        AddnotesController,],
     providers: [],
 })
-export class AddnotesModule {}
+export class AddnotesModule { }

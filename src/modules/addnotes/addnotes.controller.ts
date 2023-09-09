@@ -3,6 +3,7 @@ https://docs.nestjs.com/controllers#controllers
 */
 
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { response } from 'express';
 import { AddNotesDTO } from 'src/models/dto/addnotes.dto';
 import { AddnotesService } from 'src/models/services/addnotes.service';
 
@@ -25,6 +26,12 @@ export class AddnotesController {
     ) {
        
         return this.addnotesService.getNotes();
+    }
+
+    @Get('/test')
+    async location(){
+
+        await console.log(response.json);
     }
 
     @Post()

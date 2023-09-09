@@ -65,8 +65,7 @@ import { TotalController } from './modules/total/total.controller';
     VideoResponseController,
     FillController,
     FillresponseController],
-  providers: [
-      
+  providers: [   
     AuthService,
   ],
 })

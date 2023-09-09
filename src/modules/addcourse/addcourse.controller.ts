@@ -39,7 +39,10 @@ findOne(@Param() params) {
     }
 
 
-   
+   @Post('/is')
+  async chumma():Promise<any>{
+       return await this.addCourseService.chumma();
+   }
 
     @Get('delete/:id')
     deleteCourse(@Param() params){

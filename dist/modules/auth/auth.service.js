@@ -32,13 +32,30 @@ let AuthService = class AuthService {
             const payload = { userId: user.id, isStaff: user.isStaff };
             context.userId = user.id;
             context.isStaff = user.isStaff;
-            context.username = user.username;
+            context.username = user.firstname;
             context.accessToken = this.jwtService.sign(payload);
             return context;
         }
         else {
             throw new common_1.UnauthorizedException();
         }
+    }
+    async register(userDto) {
+        const user = await this.userService.rigister(userDto);
+        console.log(user);
+        return user;
+    }
+    async signIn(signInUserDto) {
+        const user = await this.userService.login(signInUserDto);
+        console.log(user);
+        return user;
+    }
+    async getAllForm(formDto) {
+        const forms = await this.userService.getAllForms(formDto);
+        return forms;
+    }
+    async saveReport(reportDTO) {
+        return await this.userService.report(reportDTO);
     }
     async populateUserType(isStaff, userId) {
         return isStaff ? await this.staffService.findStaffByUserId(userId)
