@@ -22,7 +22,7 @@ export declare class AuthController {
         user_type?: undefined;
         user_name?: undefined;
     }>;
-    report(reportDTO: ReportDTO): Promise<any>;
+    saveReport(reportDTO: ReportDTO): Promise<any>;
     getAllForms(formDto: FormDto): Promise<any>;
     checkUser(req: any): any;
 }

@@ -26,6 +26,12 @@ export declare class Report {
     userType: string;
     userId: string;
     userName: string;
-    approver1: string;
-    approver2: string;
+    approver1Sign: string;
+    approver2Sign: string;
+    approver1Comment: string;
+    approver2Comment: string;
+    approver1Id: string;
+    approver2Id: string;
+    approver1Name: string;
+    approver2Name: string;
 }

@@ -87,10 +87,28 @@ export class Report {
     userName: string;
 
     @Column({ nullable: true })
-    approver1: string;
+    approver1Sign: string;
 
     @Column({ nullable: true })
-    approver2: string;
+    approver2Sign: string;
+
+    @Column({ nullable: true })
+    approver1Comment: string;
+
+    @Column({ nullable: true })
+    approver2Comment: string;
+
+    @Column({ nullable: true })
+    approver1Id: string;
+
+    @Column({ nullable: true })
+    approver2Id: string;
+
+    @Column({ nullable: true })
+    approver1Name: string;
+
+    @Column({ nullable: true })
+    approver2Name: string;
 
 
 }

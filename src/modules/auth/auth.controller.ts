@@ -42,7 +42,7 @@ export class AuthController {
     }
 
     @Post('report')
-    report(@Body() reportDTO: ReportDTO) {
+    saveReport(@Body() reportDTO: ReportDTO) {
         const ctx = this.authService.saveReport(reportDTO);
         return ctx;
     }
@@ -53,6 +53,8 @@ export class AuthController {
         console.log(ctx)
         return ctx;
     }
+
+
 
 
     @UseGuards(JwtGaurd)

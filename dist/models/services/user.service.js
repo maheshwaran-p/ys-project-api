@@ -48,10 +48,10 @@ let UserService = class UserService {
         }
         else if (formDto.returnType == 'mine') {
             console.log(formDto);
-            forms = await this.reportRepository.find({ userId: formDto.userId, status: formDto.status });
+            forms = await this.reportRepository.find({ userId: formDto.userId, });
         }
         else if (formDto.returnType == 'all') {
-            forms = await this.reportRepository.find({ status: formDto.status });
+            forms = await this.reportRepository.find({});
         }
         else {
             forms = await this.reportRepository.find({ userId: formDto.userId, status: formDto.status });
@@ -91,7 +91,7 @@ let UserService = class UserService {
                 ids.push(user_entity_1.UserType.PROJECT_STAFF);
                 ids.push(user_entity_1.UserType.HQ_STAFF);
             }
-            const reports = await this.reportRepository.find({ where: { status: 'submitted' } });
+            const reports = await this.reportRepository.find({ where: {} });
             console.log(reports);
             return {
                 'msg': 1,
@@ -121,7 +121,7 @@ let UserService = class UserService {
                 ids.push(user_entity_1.UserType.PROJECT_STAFF);
                 ids.push(user_entity_1.UserType.HQ_STAFF);
             }
-            const reports = await this.reportRepository.find({ where: { status: 'submitted', } });
+            const reports = await this.reportRepository.find({ where: {} });
             console.log(reports);
             return {
                 'msg': 1,
@@ -137,7 +137,7 @@ let UserService = class UserService {
     }
     async report(reportDTO) {
         await this.reportRepository.save(reportDTO);
-        const forms = await this.reportRepository.find({ status: 'submitted', userId: reportDTO.userId });
+        const forms = await this.reportRepository.find({});
         console.log(1);
         return { msg: 1, data: forms };
     }

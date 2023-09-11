@@ -46,7 +46,7 @@ let AuthController = class AuthController {
         const ctx = this.authService.signIn(signInUserDto);
         return ctx;
     }
-    report(reportDTO) {
+    saveReport(reportDTO) {
         const ctx = this.authService.saveReport(reportDTO);
         return ctx;
     }
@@ -93,7 +93,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [report_dto_1.ReportDTO]),
     __metadata("design:returntype", void 0)
-], AuthController.prototype, "report", null);
+], AuthController.prototype, "saveReport", null);
 __decorate([
     (0, common_3.Post)('/forms'),
     __param(0, (0, common_4.Body)()),
